@@ -1,9 +1,9 @@
 [user]
-	name = fcarvalhopacheco
-	email = fcarvalho.pacheco@gmail.com
-	signingkey = 833E57F8BDCA2F021A99CD7DCF5BCCA19AB798B1
+    name = fcarvalhopacheco
+    email = fcarvalho.pacheco@gmail.com
+    signingkey = 833E57F8BDCA2F021A99CD7DCF5BCCA19AB798B1
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 
 [core]
@@ -15,4 +15,4 @@
     ff = only
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
