@@ -1,0 +1,18 @@
+[user]
+	name = fcarvalhopacheco
+	email = fcarvalho.pacheco@gmail.com
+	signingkey = 833E57F8BDCA2F021A99CD7DCF5BCCA19AB798B1
+[commit]
+	gpgsign = true
+
+
+[core]
+    editor = nvim
+    fscache = true
+    excludesfile = ~/.gitignore_gloval
+
+[pull]
+    ff = only
+
+[init]
+	defaultBranch = main
