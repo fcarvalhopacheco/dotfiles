@@ -7,8 +7,6 @@ HISTFILE=~/.zsh_history
 # source
 source "$HOME/.config/zsh/zsh-aliases.zsh"
 
-# Starship
-eval "$(starship init zsh)"
 
 # GPG key 
 export GPG_TTY=$(tty)
@@ -18,4 +16,6 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # cargo
 . "$HOME/.cargo/env"
 
+# Starship
+eval "$(starship init zsh)"
 

@@ -21,11 +21,11 @@ alias ...="cd ../.."
 alias cl=clear
 
 # ls using exa
-alias ls="exa --icons --color=auto"               
-alias l="exa -lah --time-style long-iso --icons --color=auto"        
-alias ll="exa -lh --time-style long-iso --icons --color=auto --git"
-alias lll="exa -lasnew --time-style long-iso --icons --color=auto --git"        
-alias lt='exa -Tlah --time-style long-iso --icons --color=auto'
+alias ls="exa --icons --color=auto --group --git"               
+alias l="exa -lah --time-style long-iso --icons --color=auto --group --git"        
+alias ll="exa -lh --time-style long-iso --icons --color=auto --group --git"
+alias lll="exa -lasnew --time-style long-iso --icons --color=auto --group --git"        
+alias lt='exa -Tlah --time-style long-iso --icons --color=auto --group --git'
 
 # CD Shortcuts
 alias docs="cd ~/Documents"
