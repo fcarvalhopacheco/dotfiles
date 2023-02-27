@@ -3,7 +3,7 @@
 
 alias vi="nvim"
 alias vim="nvim"
-alias aedit=" $EDITOR $ZSH_CONFIG/aliases.zsh; source $ZSH_CONFIG/aliases.zsh"
+alias aedit=" $EDITOR $ZSH_CONFIG/zsh-aliases.zsh; source $ZSH_CONFIG/zsh-aliases.zsh"
 
 
 # confirm before overwriting something
@@ -32,7 +32,7 @@ alias docs="cd ~/Documents"
 alias dl="cd ~/Downloads/"
 alias dw="cd ~/Documents/workspace/"
 alias dwg="cd ~/Documents/workspace/1.git/"
-
+alias dot="cd ~/.dotfiles/"
 
 
 
