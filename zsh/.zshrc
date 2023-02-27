@@ -5,7 +5,7 @@ bootTimeStart=$(gdate +%s%N 2>/dev/null || date +%s%N)
 HISTFILE=~/.zsh_history
 
 # source
-source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/zsh-aliases.zsh"
 
 # Starship
 eval "$(starship init zsh)"
