@@ -12,9 +12,6 @@ export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 mkdir -p $ZSH_CACHE
 
 
-# zsh config
-export ZDOTDIR="$HOME/.config/zsh"
-
 # search path
 export PATH="$HOME/.local/bin":$PATH
 
