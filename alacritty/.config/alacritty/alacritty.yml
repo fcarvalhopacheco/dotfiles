@@ -1,6 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes/palenight.yml
-
+  - ~/.config/alacritty/themes/themes/tender.yam
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
@@ -25,7 +24,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -72,7 +71,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.85
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -175,7 +174,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 14
+  size: 13
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -199,7 +198,7 @@ font:
   #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 
 # Colors (Tomorrow Night)
