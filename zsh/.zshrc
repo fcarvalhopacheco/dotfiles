@@ -15,5 +15,7 @@ export GPG_TTY=$(tty)
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+# cargo
+. "$HOME/.cargo/env"
 
 

@@ -16,3 +16,4 @@ mkdir -p $ZSH_CACHE
 export PATH="$HOME/.local/bin":$PATH
 
 export DATE=$(date +%Y-%m-%d)
+. "$HOME/.cargo/env"
