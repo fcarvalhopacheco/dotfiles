@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes/tender.yam
+  - ~/.config/alacritty/themes/themes/tender.yaml
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
