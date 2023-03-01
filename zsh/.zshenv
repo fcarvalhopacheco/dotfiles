@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 #     ███████╗███████╗██╗  ██╗███████╗███╗   ██╗██╗   ██╗
 #     ╚══███╔╝██╔════╝██║  ██║██╔════╝████╗  ██║██║   ██║
 #       ███╔╝ ███████╗███████║█████╗  ██╔██╗ ██║██║   ██║
@@ -8,6 +7,9 @@
 #  ██╗███████╗███████║██║  ██║███████╗██║ ╚████║ ╚████╔╝ 
 #  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  
 #                                                        
+#  Reference
+#    : https://thevaluable.dev/zsh-install-configure-mouseless/
+#
 
 ###############################
 # EXPORT ENVIRONMENT VARIABLE #
@@ -18,31 +20,36 @@
 (( ${+TERM} )) || export TERM="xterm-256color"
 (( ${+DOTFILES} )) || export DOTFILES="$HOME/.dotfiles"                
 (( ${+WORKSPACE} )) || export WORKSPACE="$HOME/Documents/workspace"                
-(( ${+BROWSER} )) || export BROWSER="brave"                             
-(( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
-#
-# Editor
-(( ${+VISUAL} )) || export VISUAL="nvim"                
-(( ${+EDITOR} )) || export EDITOR="nvim"                             
 
 
 # XDG Base Directory Specification
 # http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-# zsh
+
+# Editor
+export VISUAL="nvim"                
+export EDITOR="nvim"                             
+
+
+# Zsh enviroment variables
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
 
-#export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
-#export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
-#mkdir -p $ZSH_CACHE
 
-# search path
+# BROWSER
+(( ${+BROWSER} )) || export BROWSER="brave"                             
+
+
+# TERMINAL
+(( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
+
+
+# PATH
 [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
 
