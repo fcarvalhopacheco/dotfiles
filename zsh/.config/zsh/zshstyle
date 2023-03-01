@@ -1,0 +1,105 @@
+#!/usr/bin/env zsh
+
+#
+#
+#  ███████╗███████╗████████╗██╗   ██╗██╗     ███████╗
+#  ╚══███╔╝██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝
+#    ███╔╝ ███████╗   ██║    ╚████╔╝ ██║     █████╗  
+#   ███╔╝  ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  
+#  ███████╗███████║   ██║      ██║   ███████╗███████╗
+#  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝
+#                                                    
+#  References
+#    : https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
+#    : https://thevaluable.dev/zsh-completion-guide-examples/
+#
+#  General rule:
+#    
+#    ```sh 
+#    zstyle <pattern> <style> <values>
+#    ```
+#
+#  General Pattern: 
+# 
+#    ```sh 
+#    :completion:<function>:<completer>:<command>:<argument>:<tag>
+#    ```
+#
+#    + completion - String acting as a namespace, to avoid pattern collisions
+#                   with other scripts also using zstyle.
+#    + <function> - Apply the style to the completion of an external function 
+#                   or widget.
+#    + <completer> - Apply the style to a specific completer. We need to drop 
+#                    the underscore from the completer’s name here.
+#    + <command> - Apply the style to a specific command, like cd, rm, or sed 
+#                  for example.
+#    + <argument> - Apply the style to the nth option or the nth argument.
+#                   It’s not available for many styles.
+#    + <tag> - Apply the style to a specific tag.
+
+
+# Define completers
+zstyle ':completion:*' completer _extensions _complete _approximate
+
+# Use cache for commands using cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+
+# Complete the alias when _expand_alias is used as a function
+zstyle ':completion:*' complete true
+
+# Highlight matching part of available completions
+autoload -U colors ; colors
+#zstyle ':completion:*' list-colors  'reply=( "=(#b)(*$PREFIX)(?)*=00=$color[green]=$color[bg-green]" )'
+
+
+# Allow you to select in a menu
+zstyle ':completion:*' menu select
+
+# Autocomplete options for cd instead of directory stack
+zstyle ':completion:*' complete-options true
+
+# determine in which order the names (files) should be
+# listed and completed when using menu completion.
+# `size' to sort them by the size of the file
+# `links' to sort them by the number of links to the file
+# `modification' or `time' or `date' to sort them by the last modification time
+# `access' to sort them by the last access time
+# `inode' or `change' to sort them by the last inode change time
+# `reverse' to sort in decreasing order
+# If the style is set to any other value, or is unset, files will be
+# sorted alphabetically by name.
+
+zstyle ':completion:*' file-sort modification
+
+
+# Messages/warnings format
+zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
+
+
+# Colors for files and directory
+zstyle ':completion:*:*:*:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Only display some tags for the command cd
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+
+
+# Required for completion to be in good groups (named after the tags)
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+
+# See ZSHCOMPWID "completion matching control"
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion:*' keep-prefix true
+
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+
+
+
+

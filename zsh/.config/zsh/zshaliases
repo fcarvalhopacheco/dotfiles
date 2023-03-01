@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+#
+#
+#   █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
+#  ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+#  ███████║██║     ██║███████║███████╗█████╗  ███████╗
+#  ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║
+#  ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
+#  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+#                                                                             
+#
+
+#  Vim
+alias vi="nvim"
+alias vim="nvim"
+
+
+#  Edit alias
+alias aedit=" $EDITOR $ZSH_CONFIG/zshaliases.zsh; source $ZSH_CONFIG/zshaliases.zsh"
+
+
+#  Copy
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+
+#  Read Disk
+alias df='df -h'     # human-readable sizes
+
+
+#  Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias cl=clear
+
+
+#  LS
+alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
+alias lsa='ls -a -- .*(.)'				# only show dot-filesalias
+alias lsnew='=ls -rtlh -- *(.) | tail $@ 2&>/dev/null'  # only the newest files
+alias ls="ls"
+alias l="ls -la"
+alias ll="ls -l"
+alias ltra="ls -ltra"
+
+
+# ls using exa
+# alias ls="exa --icons --color=auto --group --git"               
+# alias l="exa -la --time-style iso --icons --color=auto --group --git"        
+# alias ll="exa -l --time-style iso --icons --color=auto --group --git"
+# alias lll="exa -lasnew --time-style iso --icons --color=auto --group --git"        
+# alias lt='exa -Tla --time-style iso --icons --color=auto --group --git'
+
+
+#  Shortcuts
+alias docs="cd ~/Documents"
+alias dl="cd ~/Downloads/"
+alias dw="cd ~/Documents/workspace/"
+alias dwg="cd ~/Documents/workspace/1.git/"
+alias dot="cd ~/.dotfiles/"
+
+
+

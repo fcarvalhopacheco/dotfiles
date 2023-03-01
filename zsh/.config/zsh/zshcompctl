@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+#
+#
+#   ██████╗ ██████╗ ███╗   ███╗██████╗  ██████╗████████╗██╗     
+#  ██╔════╝██╔═══██╗████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║     
+#  ██║     ██║   ██║██╔████╔██║██████╔╝██║        ██║   ██║     
+#  ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║        ██║   ██║     
+#  ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ╚██████╗   ██║   ███████╗
+#   ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝      ╚═════╝   ╚═╝   ╚══════╝
+#         
+#  Reference
+#    : https://thevaluable.dev/zsh-completion-guide-examples/
+#    : https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
+#    : https://www.strcat.de/dotfiles/
+#
+
+# from installing `brew install zsh-completions`
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+
+    # The AUTOLOAD command loads a file containing shell commands. 
+    # To find this file, Zsh will look in the directories of the Zsh file 
+    # search path, defined in the variable $fpath. From there, it will try 
+    # to find a file named compinit.
+    # When the file COMPINIT is found, its contents will be loaded as a 
+    # function.
+    # -U = it doesn't expand alias
+    # -z = function written in zshell style! check zshstyle file for more info
+    autoload -Uz compinit
+    compinit
+fi
+
+ear
+_comp_options+=(globdots) # With hidden files
+
+
+
