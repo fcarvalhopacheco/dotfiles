@@ -94,10 +94,6 @@ fi
 #
 
 
-# GPG key 
-export GPG_TTY=$(tty)
-
-
 # Homebrew
 eval "$(/usr/local/bin/brew shellenv)"
 
