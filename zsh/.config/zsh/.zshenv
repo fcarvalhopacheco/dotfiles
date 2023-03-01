@@ -11,15 +11,11 @@
 #
 
 # XDG Base Directory Specification
-# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+#   : http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-
-###############################
-# EXPORT ENVIRONMENT VARIABLE #
-###############################
 
 # (( ${+*} )) = if variable is set don't set it anymore
 # Adpated from https://www.strcat.de/dotfiles/
@@ -48,7 +44,6 @@ export EDITOR="nvim"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
-
 
 
 # PATH
