@@ -16,7 +16,7 @@ alias vim="nvim"
 
 
 #  Edit alias
-alias aedit=" $EDITOR $ZDOTDIR/zshaliases.zsh; source $ZDOTDIR/zshaliases.zsh"
+alias aedit=" $EDITOR $ZDOTDIR/zshaliases; source $ZDOTDIR/zshaliases"
 
 
 #  Copy
@@ -40,7 +40,6 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 #  LS
 alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
 alias lsa='ls -a -- .*(.)'				# only show dot-filesalias
-alias lsnew='=ls -rtlh -- *(.) | tail $@ 2&>/dev/null'  # only the newest files
 alias ls="ls"
 alias l="ls -la"
 alias ll="ls -l"
