@@ -20,10 +20,10 @@
 ####################################################
 
 # Test and then source EXPORTED variables.
-if [ -f $HOME/.zshenv ]; then
-        source $HOME/.zshenv
+if [ -f $ZDOTDIR/.zshenv ]; then
+        source $ZDOTDIR/.zshenv
 else
-        print "Note: $HOME/.zshenv is unavailable."
+        print "Note: $ZDOTDIR/.zshenv is unavailable."
 fi
 
 
