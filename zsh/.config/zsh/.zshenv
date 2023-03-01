@@ -23,9 +23,15 @@ export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
 # (( ${+*} )) = if variable is set don't set it anymore
 # Adpated from https://www.strcat.de/dotfiles/
+
+# Set default terminal emulator
+(( ${+TERMINAL} )) || export TERMINAL="alacritty"
+
+# Set default browser
+(( ${+BROWSER} )) || export BROWSER="brave"
+
+# Term color
 (( ${+TERM} )) || export TERM="xterm-256color"
-(( ${+BROWSER} )) || export BROWSER="brave"                             
-(( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
 
 
 # Set default directories
