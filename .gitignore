@@ -1,3 +1,7 @@
-/nvim/.config/nvim/plugin/packer_compiled.lua
-alacritty/.config/alacritty/themes/
 .DS_Store
+/nvim/.config/nvim/plugin/packer_compiled.lua
+/alacritty/.config/alacritty/themes/
+.zsh_history
+.zhistory
+.zcompdump
+.zsh_sessions
