@@ -1,5 +1,4 @@
-#!/usr/bin/env zsh
-
+#
 #     ███████╗███████╗██╗  ██╗███████╗███╗   ██╗██╗   ██╗
 #     ╚══███╔╝██╔════╝██║  ██║██╔════╝████╗  ██║██║   ██║
 #       ███╔╝ ███████╗███████║█████╗  ██╔██╗ ██║██║   ██║
@@ -11,6 +10,13 @@
 #    : https://thevaluable.dev/zsh-install-configure-mouseless/
 #
 
+# XDG Base Directory Specification
+# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+
+
 ###############################
 # EXPORT ENVIRONMENT VARIABLE #
 ###############################
@@ -18,17 +24,13 @@
 # (( ${+*} )) = if variable is set don't set it anymore
 # Adpated from https://www.strcat.de/dotfiles/
 (( ${+TERM} )) || export TERM="xterm-256color"
-(( ${+DOTFILES} )) || export DOTFILES="$HOME/.dotfiles"                
-(( ${+WORKSPACE} )) || export WORKSPACE="$HOME/Documents/workspace"                
 (( ${+BROWSER} )) || export BROWSER="brave"                             
 (( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
 
 
-# XDG Base Directory Specification
-# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+# Set default directories
+export WORKSPACE="$HOME/Documents/workspace"
+export DOTFILES="$HOME/.dotfiles"
 
 
 # Editor
@@ -37,22 +39,16 @@ export EDITOR="nvim"
 
 
 # Zsh enviroment variables
-#export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
-export DOTFILES=$HOME/.dotfiles
 
 
 
 # PATH
 [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
-
-
-
-# GPG key 
-export GPG_TTY=$(tty)
+[ -d "/usr/local/bin" ] && PATH="${PATH}:/usr/local/bin"
 
 
 
