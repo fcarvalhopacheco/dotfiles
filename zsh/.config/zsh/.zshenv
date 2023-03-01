@@ -20,6 +20,8 @@
 (( ${+TERM} )) || export TERM="xterm-256color"
 (( ${+DOTFILES} )) || export DOTFILES="$HOME/.dotfiles"                
 (( ${+WORKSPACE} )) || export WORKSPACE="$HOME/Documents/workspace"                
+(( ${+BROWSER} )) || export BROWSER="brave"                             
+(( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
 
 
 # XDG Base Directory Specification
@@ -39,19 +41,19 @@ export EDITOR="nvim"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
+export DOTFILES=$HOME/.dotfiles
 
-
-# BROWSER
-(( ${+BROWSER} )) || export BROWSER="brave"                             
-
-
-# TERMINAL
-(( ${+TERMINAL} )) || export TERMINAL="alacritty"                             
 
 
 # PATH
 [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
+
+
+
+# GPG key 
+export GPG_TTY=$(tty)
+
 
 
 # # Check some directories and add existing to $PATH
