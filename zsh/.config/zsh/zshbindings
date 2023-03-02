@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+#
+#  ██████╗ ██╗███╗   ██╗██████╗ ██╗███╗   ██╗ ██████╗ ███████╗
+#  ██╔══██╗██║████╗  ██║██╔══██╗██║████╗  ██║██╔════╝ ██╔════╝
+#  ██████╔╝██║██╔██╗ ██║██║  ██║██║██╔██╗ ██║██║  ███╗███████╗
+#  ██╔══██╗██║██║╚██╗██║██║  ██║██║██║╚██╗██║██║   ██║╚════██║
+#  ██████╔╝██║██║ ╚████║██████╔╝██║██║ ╚████║╚██████╔╝███████║
+#  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+#
+#  References
+#    :  https://www.strcat.de/dotfiles/
+#    :  https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
+#
+#
+
+# Use hjlk in menu selection (during completion)
+# Doesn't work well with interactive mode
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'i' accept-and-menu-complete
+bindkey -M menuselect 'o' accept-and-infer-next-history
+bindkey -M menuselect '^d' clear-screen
+bindkey -M menuselect 'u' undo                           # Undo
+
+#bindkey -M menuselect '^xi' vi-insert
+
