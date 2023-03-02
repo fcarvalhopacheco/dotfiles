@@ -57,12 +57,12 @@ fi
 #         print "Note: ~/.zsh/zshzle is unavailable."
 # fi
 #
-# # Test and then source the keybindings
-# if [ -f ~/.zsh/zshbindings ]; then
-#         source ~/.zsh/zshbindings
-# else
-#         print "Note: ~/.zsh/zshbindings is not available."
-# fi
+# Test and then source the keybindings
+if [ -f $ZDOTDIR/zshbindings ]; then
+        source $ZDOTDIR/zshbindings
+else
+        print "Note: $ZDOTDIR/zshbindings is not available."
+fi
 
 # Test and then source the COMPLETIONSYSTEM
 if [ -f $ZDOTDIR/zshcompctl ]; then
