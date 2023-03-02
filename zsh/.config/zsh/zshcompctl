@@ -14,10 +14,8 @@
 #    :  https://www.strcat.de/dotfiles/
 #
 
-
 # Should be called before compinit
 zmodload zsh/complist
-
 
 # from installing `brew install zsh-completions`
 if type brew &>/dev/null; then
@@ -37,6 +35,8 @@ if type brew &>/dev/null; then
 fi
 
 _comp_options+=(globdots) # With hidden files
+
+
 
 
 
