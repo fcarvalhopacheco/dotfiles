@@ -21,7 +21,6 @@ zmodload zsh/complist
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-
     # The AUTOLOAD command loads a file containing shell commands. 
     # To find this file, Zsh will look in the directories of the Zsh file 
     # search path, defined in the variable $fpath. From there, it will try 
