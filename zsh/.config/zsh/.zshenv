@@ -17,6 +17,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
+# GPG key 
+export GPG_TTY=$(tty)
 
 # (( ${+*} )) = if variable is set don't set it anymore
 # Adpated from https://www.strcat.de/dotfiles/
@@ -50,7 +52,6 @@ export SAVEHIST=10000                   # Maximum events in history file
 # PATH
 [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
-[ -d "/usr/local/bin" ] && PATH="${PATH}:/usr/local/bin"
 
 
 
