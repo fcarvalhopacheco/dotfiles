@@ -18,16 +18,13 @@ alias vim="nvim"
 #  Edit alias
 alias aedit=" $EDITOR $ZDOTDIR/zshaliases; source $ZDOTDIR/zshaliases"
 
-
 #  Copy
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-
 #  Read Disk
 alias df='df -h'     # human-readable sizes
-
 
 #  Navigation
 alias ..="cd .."
@@ -35,7 +32,6 @@ alias ...="cd ../.."
 alias cl=clear
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
 
 #  LS
 alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
@@ -61,4 +57,10 @@ alias dw="cd ~/Documents/workspace/"
 alias dwg="cd ~/Documents/workspace/1.git/"
 alias dot="cd ~/.dotfiles/"
 
+
+# Git 
+alias gs='git status'
+alias gss='git status -s'
+alias gc='git commit -S -m'
+alias gd='git diff'
 
