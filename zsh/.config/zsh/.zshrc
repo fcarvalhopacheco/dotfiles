@@ -27,6 +27,22 @@ else
 fi
 
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/fcp/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/fcp/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/fcp/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/fcp/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
 # test and then source some options
 if [ -f $ZDOTDIR/zshoptions ]; then
     source $ZDOTDIR/zshoptions
@@ -57,21 +73,23 @@ fi
 #         print "Note: ~/.zsh/zshzle is unavailable."
 # fi
 #
-# Test and then source the keybindings
+
+# Test and then source the COMPLETIONSYSTEM
+if [ -f $ZDOTDIR/zshcompctl ]; then
+    source $ZDOTDIR/zshcompctl
+else
+    print "Note: $ZDOTDIR/zshcompctl is unavailable."
+fi
+
+# Test and then source the KEYBINDINGS
 if [ -f $ZDOTDIR/zshbindings ]; then
         source $ZDOTDIR/zshbindings
 else
         print "Note: $ZDOTDIR/zshbindings is not available."
 fi
 
-# Test and then source the COMPLETIONSYSTEM
-if [ -f $ZDOTDIR/zshcompctl ]; then
-        source $ZDOTDIR/zshcompctl
-else
-        print "Note: $ZDOTDIR/zshcompctl is unavailable."
-fi
 
-# Test and then source the zstyles
+# Test and then source the ZSTYLES
 if [ -f $ZDOTDIR/zshstyle ]; then
         source $ZDOTDIR/zshstyle
 else
@@ -96,22 +114,4 @@ fi
 # Homebrew
 eval "$(/usr/local/bin/brew shellenv)"
 
-# GPG key 
-export GPG_TTY=$(tty)
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/fcp/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/fcp/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/fcp/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/fcp/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
