@@ -15,18 +15,16 @@
 #  References:
 #      - https://youtu.be/bTLYiNvRIVI?t=718
 #      - https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290#diff-19d6e188e737380d7f90bd4cc17fc9bc32faec512cf947016386913e9b168f64
-#
-#  
+#      - https://github.com/zap-zsh 
 #
 #████████████████████████████████████████████████████████████████████████████
 
 function zsh_add_file() {
-#     zsh_add_file funtion
-#    
-#     This function is based on code from the Machfiles project, 
-#     which is licensed under the GNU GPL v3.0. The original code can be found at:
-#     https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290
-#
+    # #########################################################################  
+    # This function is based on code from ChristianChiarulli , 
+    # The original code can be found at:
+    # https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290
+    # #########################################################################
     if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
         clear
         echo "---------------------------------------------------------------"
@@ -43,40 +41,70 @@ function zsh_add_file() {
     fi
 }
 
-
-
 function zsh_add_plugin() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
-        # For plugins
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+    # #########################################################################  
+    # This function is based on code from ChristianChiarulli , 
+    # The original code can be found at:
+    # https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290
+    # #########################################################################
+    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+        clear
+        echo "---------------------------------------------------------------"
+        echo "zsh_add_plugin: Add a Zsh plugin from GitHub to the Zsh plugin directory."
+        echo "Usage: zsh_add_plugin <username/repo>"
+        echo "Example: zsh_add_plugin zsh-users/zsh-autosuggestions"
+        echo "---------------------------------------------------------------"
+    else
+        PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+        if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+            # For plugins
+            zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
             zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
-                else
-                    git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+        else
+            git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+        fi
     fi
 }
 
+    
+
 function zsh_add_completion() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
-        # For completions
-        completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
-        fpath+="$(dirname "${completion_file_path}")"
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
+    ##########################################################################  
+    # This function is based on code from ChristianChiarulli, 
+    # The original code can be found at:
+    # https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290
+    ##########################################################################
+    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+        clear
+        echo "---------------------------------------------------------------"
+        echo "zsh_add_completion: Add a completion file to Zsh."
+        echo "Usage: zsh_add_completion <github_username/plugin_name> [compinit]"
+        echo "Example: zsh_add_completion ohmyzsh/ohmyzsh true"
+        echo "Options:"
+        echo "  compinit  : Whether or not to run compinit for the completion file."
+        echo "              If 'true', compinit will be run for the completion file."
+        echo "              If 'false', compinit will not be run for the completion file."
+        echo "              Default value: 'false'."
+        echo "---------------------------------------------------------------"
     else
-        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
-        fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
-        [ -f $ZDOTDIR/.zccompdump ] && $ZDOTDIR/.zccompdump
+        PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+        if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+            # For completions
+            completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+            fpath+="$(dirname "${completion_file_path}")"
+            zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
+        else
+            git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+            fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+            [ -f $ZDOTDIR/.zcompdump ] && $ZDOTDIR/.zcompdump
+        fi
+        
+        completion_file="$(basename "${completion_file_path}")"
+        
+        if [ "$2" = true ] && compinit "${completion_file:1}"; then
+            #echo "Completion file '$completion_file' added to Zsh and compinit run."
+        else
+            #echo "Completion file '$completion_file' added to Zsh."
+        fi
     fi
-    completion_file="$(basename "${completion_file_path}")"
-    if [ "$2" = true ] && compinit "${completion_file:1}"
-    }
-
-    function mach_java_mode() {
-        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-        export SDKMAN_DIR="$HOME/.sdkman"
-        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-    }
-
-
-
+}    
