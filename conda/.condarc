@@ -24,19 +24,6 @@ channels:
   - conda-forge
   - defaults
 
-# when using "conda create" for envs these packages will always be 
-# installed adjust that list according your needs
-# create_default_packages:
-#   - ipykernel
-#   - jupyter
-#   - jupyter_contrib_nbextensions
-#   - pip
-#   - blas=*=openblas
-# blas=*=openblas avoids mkl
-
-# faster (experimental) solver
-#sat_solver: pycryptosat
-#safety_checks: disabled
 ssl_verify: true
 
-changeps1: false
+auto_activate_base: false
