@@ -41,7 +41,6 @@ zsh_add_file "zshaliases"
 zsh_add_file "zshcompctl"
 zsh_add_file "zshbindings"
 zsh_add_file "zshstyle"
-export PROMPT_SHOW_PYTHON=true
 zsh_add_file "zshprompt"
 
 # Homebrew
