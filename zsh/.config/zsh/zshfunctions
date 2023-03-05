@@ -66,7 +66,6 @@ function zsh_add_plugin() {
     fi
 }
 
-    
 
 function zsh_add_completion() {
     ##########################################################################  
@@ -79,7 +78,7 @@ function zsh_add_completion() {
         echo "---------------------------------------------------------------"
         echo "zsh_add_completion: Add a completion file to Zsh."
         echo "Usage: zsh_add_completion <github_username/plugin_name> [compinit]"
-        echo "Example: zsh_add_completion ohmyzsh/ohmyzsh true"
+        echo "Example: zsh_add_completion conda-incubator/conda-zsh-completion true"
         echo "Options:"
         echo "  compinit  : Whether or not to run compinit for the completion file."
         echo "              If 'true', compinit will be run for the completion file."

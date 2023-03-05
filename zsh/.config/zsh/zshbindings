@@ -30,6 +30,8 @@
 bindkey -v
 export KEYTIMEOUT=1
 
+
+
 if [[ -o menucomplete ]]; then 
     # Use hjlk in menu selection (during completion)
     bindkey -M menuselect 'h' vi-backward-char
@@ -64,14 +66,4 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { 
     echo -ne '\e[5 q' 
 } 
-
-
-
-
-
-
-
-
-
-
 
