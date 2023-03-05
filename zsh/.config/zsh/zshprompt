@@ -1,10 +1,31 @@
 #!/usr/bin/env zsh
+
 #
-# References:
-# - https://zsh-prompt-generator.site
-# - https://dev.to/cassidoo/customizing-my-zsh-prompt-3417
-# - Colors: https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
-# - Symbols: https://symbl.cc/en/
+#████████████████████████████████████████████████████████████████████████████
+#
+#
+#      ██████╗ ██████╗  ██████╗ ███╗   ███╗██████╗ ████████╗
+#      ██╔══██╗██╔══██╗██╔═══██╗████╗ ████║██╔══██╗╚══██╔══╝
+#      ██████╔╝██████╔╝██║   ██║██╔████╔██║██████╔╝   ██║   
+#      ██╔═══╝ ██╔══██╗██║   ██║██║╚██╔╝██║██╔═══╝    ██║   
+#      ██║     ██║  ██║╚██████╔╝██║ ╚═╝ ██║██║        ██║   
+#      ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝        ╚═╝   
+#
+#        GitHub:  https://github.com/fcarvalhopacheco
+#                                                           
+#   References:
+#       - https://zsh-prompt-generator.site
+#       - https://dev.to/cassidoo/customizing-my-zsh-prompt-3417
+#       - Colors: https://github.com/zsh-users/zsh/blob/master/Functions/Misc/colors
+#       - Symbols: https://symbl.cc/en/
+#       - vcs_info : https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+#
+#
+#   *This script is based on code from https://github.com/zap-zsh, 
+#   which is licensed under the GNU GPL v3.0. The original code can be 
+#   found at: https://github.com/zap-zsh/atmachine-prompt/blob/master/atmachine-prompt.zsh-theme 
+#
+#████████████████████████████████████████████████████████████████████████████
 
 # Loadthe Version Control System into your prompt
 autoload -Uz vcs_info
@@ -15,7 +36,6 @@ zstyle ':vcs_info:*' enable git
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-
 
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 # 
@@ -36,12 +56,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 # %c : Show staged changes in the repository
 ##############################################################################
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[green]%})"
 
-
-#PROMPT="%B%{%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m %(?:%{$fg_bold[yellow]%}🏄 :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
-#PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[red]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
-
 PROMPT+="\$vcs_info_msg_0_ "
-
