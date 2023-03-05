@@ -10,16 +10,17 @@
 #       ██████╔╝██║██║ ╚████║██████╔╝██║██║ ╚████║╚██████╔╝███████║
 #       ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
 #
-#    GitHub:  https://github.com/fcarvalhopacheco
+#             GitHub:  https://github.com/fcarvalhopacheco
+#
 #
 #    References:
 #       - https://www.strcat.de/dotfiles/
 #       - https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
 #
 #
-#   This script is based on code from https://github.com/zap-zsh/vim, 
-#   which is licensed under the GNU GPL v3.0. The original code can be 
-#   found at:  https://github.com/zap-zsh/vim/blob/master/vim.plugin.zsh
+#    This script is based on code from https://github.com/zap-zsh/vim, 
+#    which is licensed under the GNU GPL v3.0. The original code can be 
+#    found at:  https://github.com/zap-zsh/vim/blob/master/vim.plugin.zsh
 #   
 #
 #████████████████████████████████████████████████████████████████████████████
