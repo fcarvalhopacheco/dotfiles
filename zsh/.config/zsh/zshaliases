@@ -70,4 +70,4 @@ alias gc='git commit -S -m'
 alias gd='git diff'
 
 # Conda
-alias condaon="source ~/.config/zsh/zshconda"
+alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source $ZDOTDIR/.zshrc"
