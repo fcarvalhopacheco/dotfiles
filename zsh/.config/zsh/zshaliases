@@ -1,22 +1,28 @@
 #!/usr/bin/env zsh
 #
+#████████████████████████████████████████████████████████████████████████████
 #
-#   █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
-#  ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
-#  ███████║██║     ██║███████║███████╗█████╗  ███████╗
-#  ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║
-#  ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
-#  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
-#                                                                             
 #
+#        █████╗ ██╗     ██╗ █████╗ ███████╗███████╗███████╗
+#       ██╔══██╗██║     ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+#       ███████║██║     ██║███████║███████╗█████╗  ███████╗
+#       ██╔══██║██║     ██║██╔══██║╚════██║██╔══╝  ╚════██║
+#       ██║  ██║███████╗██║██║  ██║███████║███████╗███████║
+#       ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+#    
+#       GitHub:  https://github.com/fcarvalhopacheco
+#
+#                                                      
+#████████████████████████████████████████████████████████████████████████████
 
 #  Vim
 alias vi="nvim"
 alias vim="nvim"
 
 
-#  Edit alias
+#  Edit files
 alias aedit=" $EDITOR $ZDOTDIR/zshaliases; source $ZDOTDIR/zshaliases"
+alias zedit=" $EDITOR $ZDOTDIR/.zshrc; source $ZDOTDIR/.zshrc"
 
 #  Copy
 alias cp="cp -i"
@@ -41,7 +47,6 @@ alias l="ls -la"
 alias ll="ls -l"
 alias ltra="ls -ltra"
 
-
 # ls using exa
 # alias ls="exa --icons --color=auto --group --git"               
 # alias l="exa -la --time-style iso --icons --color=auto --group --git"        
@@ -64,3 +69,5 @@ alias gss='git status -s'
 alias gc='git commit -S -m'
 alias gd='git diff'
 
+# Conda
+alias condaon="source ~/.config/zsh/zshconda"

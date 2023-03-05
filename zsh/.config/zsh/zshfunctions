@@ -1,0 +1,82 @@
+#!/usr/bin/env zsh
+
+#████████████████████████████████████████████████████████████████████████████
+#
+#
+#  ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
+#  ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+#  █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
+#  ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
+#  ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
+#  ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+#        
+#  GitHub:  https://github.com/fcarvalhopacheco
+#  
+#  References:
+#      - https://youtu.be/bTLYiNvRIVI?t=718
+#      - https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290#diff-19d6e188e737380d7f90bd4cc17fc9bc32faec512cf947016386913e9b168f64
+#
+#  
+#
+#████████████████████████████████████████████████████████████████████████████
+
+function zsh_add_file() {
+#     zsh_add_file funtion
+#    
+#     This function is based on code from the Machfiles project, 
+#     which is licensed under the GNU GPL v3.0. The original code can be found at:
+#     https://github.com/ChristianChiarulli/Machfiles/commit/6d5279ff8f7c290
+#
+    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+        clear
+        echo "---------------------------------------------------------------"
+        echo "zsh_add_file: Source a file in the Zsh configuration directory."
+        echo "Usage: zsh_add_file <file>"
+        echo "Example: zsh_add_file $ZDOTDIR/zshaliases"
+        echo "---------------------------------------------------------------"
+    else
+        if [ -f "$ZDOTDIR/$1" ]; then 
+            source "$ZDOTDIR/$1"
+        else
+            echo "Error: $1 not found in $ZDOTDIR"
+        fi
+    fi
+}
+
+
+
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For plugins
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+            zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+                else
+                    git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+    fi
+}
+
+function zsh_add_completion() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For completions
+        completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+        fpath+="$(dirname "${completion_file_path}")"
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+        fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+        [ -f $ZDOTDIR/.zccompdump ] && $ZDOTDIR/.zccompdump
+    fi
+    completion_file="$(basename "${completion_file_path}")"
+    if [ "$2" = true ] && compinit "${completion_file:1}"
+    }
+
+    function mach_java_mode() {
+        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+        export SDKMAN_DIR="$HOME/.sdkman"
+        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+    }
+
+
+

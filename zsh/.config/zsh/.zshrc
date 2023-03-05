@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#zmodload zsh/zprof
+# zmodload zsh/zprof
 
 #████████████████████████████████████████████████████████████████████████████
 #
@@ -13,96 +13,41 @@
 #        
 #           GitHub:  https://github.com/fcarvalhopacheco
 #        
-#           Reference:
+#           References:
 #               - https://www.strcat.de/dotfiles/
-#
+#               - https://github.com/ChristianChiarulli/Machfiles/tree/master/zsh
 # 
 #████████████████████████████████████████████████████████████████████████████
-
-####################################################
+#########################################################
+# Test and then source the FUNCTIONS file.
 # -f true if file exists and is a regular file. 
-#
-# See: 
-#   $ man zshmisc | less -p "^CONDITIONAL EXPRESSIONS"
-####################################################
-# Test and then source EXPORTED variables.
-if [ -f $ZDOTDIR/.zshenv ]; then
-        source $ZDOTDIR/.zshenv
+# See: man zshmisc | less -p "^CONDITIONAL EXPRESSIONS"
+#########################################################
+if [ -f $ZDOTDIR/zshfunctions ]; then
+    source $ZDOTDIR/zshfunctions
 else
-        print "Note: $ZDOTDIR/.zshenv is unavailable."
+    print "Note: $ZDOTDIR/zshfunctions is unavailable."
 fi
 
-# test and then source some options
-if [ -f $ZDOTDIR/zshoptions ]; then
-    source $ZDOTDIR/zshoptions
-else
-    print "Note: $ZDOTDIR/zshoptions is unavailable."
-fi
+# zsh_add_file funtion 
+# Allows you to easily source a file in your zsh configuration 
+# directory ($ZDOTDIR) by passing its name as an argument. 
+# If the file exists, it will be sourced and its contents will be executed 
+# in the current shell environment. If the file does not exist, an error msg
+# will be displayed on the prompt.
+zsh_add_file ".zshenv"
+zsh_add_file "zshoptions"
+zsh_add_file "zshaliases"
+zsh_add_file "zshcompctl"
+zsh_add_file "zshbindings"
+zsh_add_file "zshstyle"
+export PROMPT_SHOW_PYTHON=true
+zsh_add_file "zshprompt"
 
-# Test and then source ALIAS variables.
-if [ -f $ZDOTDIR/zshaliases ]; then
-        source $ZDOTDIR/zshaliases
-else
-        print "Note: $ZDOTDIR/zshaliases is unavailable."
-fi
-
-
-# # Test and then source the functions.
-# if [ -f ~/.zsh/zshfunctions ]; then
-#         source ~/.zsh/zshfunctions
-# else
-#         print "Note: ~/.zsh/zshfunctions is unavailable."
-# fi
-#
-# # Test and then source the lineeditor
-# if [ -f ~/.zsh/zshzle ]; then
-#         source ~/.zsh/zshzle
-# else
-#         print "Note: ~/.zsh/zshzle is unavailable."
-# fi
-#
-
-# Test and then source the COMPLETIONSYSTEM
-if [ -f $ZDOTDIR/zshcompctl ]; then
-    source $ZDOTDIR/zshcompctl
-else
-    print "Note: $ZDOTDIR/zshcompctl is unavailable."
-fi
-
-# Test and then source the KEYBINDINGS
-if [ -f $ZDOTDIR/zshbindings ]; then
-        source $ZDOTDIR/zshbindings
-else
-        print "Note: $ZDOTDIR/zshbindings is not available."
-fi
-
-
-# Test and then source the ZSTYLES
-if [ -f $ZDOTDIR/zshstyle ]; then
-        source $ZDOTDIR/zshstyle
-else
-        print "Note: $ZDOTDIT/zshstyle is unavailable."
-fi
-#
-# # Test and then source the wretched rest 
-# if [ -f ~/.zsh/zshmisc ]; then
-#         source ~/.zsh/zshmisc
-# else
-#         print "Note: ~/.zsh/zshmisc is unavailable."
-# fi
-#
-# # http://www.unixreview.com/documents/s=9513/ur0501a/ur0501a.htm
-# if [ -f ~/.zsh/zshkeep ]; then
-#         source ~/.zsh/zshkeep
-# else
-#         print "Note: ~/.zsh/zshkeep is unavailable."
-# fi
-#
 # Homebrew
 eval "$(/usr/local/bin/brew shellenv)"
 
 
-
-#zprof
+# zprof
 
 

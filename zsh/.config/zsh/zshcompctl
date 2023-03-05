@@ -1,25 +1,31 @@
 #!/usr/bin/env zsh
+
+#████████████████████████████████████████████████████████████████████████████
 #
 #
-#   ██████╗ ██████╗ ███╗   ███╗██████╗  ██████╗████████╗██╗     
-#  ██╔════╝██╔═══██╗████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║     
-#  ██║     ██║   ██║██╔████╔██║██████╔╝██║        ██║   ██║     
-#  ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║        ██║   ██║     
-#  ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ╚██████╗   ██║   ███████╗
-#   ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝      ╚═════╝   ╚═╝   ╚══════╝
-#         
-#  Reference
-#    :  https://thevaluable.dev/zsh-completion-guide-examples/
-#    :  https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
-#    :  https://www.strcat.de/dotfiles/
+#    ██████╗ ██████╗ ███╗   ███╗██████╗  ██████╗████████╗██╗     
+#   ██╔════╝██╔═══██╗████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║     
+#   ██║     ██║   ██║██╔████╔██║██████╔╝██║        ██║   ██║     
+#   ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║        ██║   ██║     
+#   ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ╚██████╗   ██║   ███████╗
+#    ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝      ╚═════╝   ╚═╝   ╚══════╝
+#          
+#    GitHub:  https://github.com/fcarvalhopacheco
 #
+#    References:
+#       - https://thevaluable.dev/zsh-completion-guide-examples/
+#       - https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
+#       - https://www.strcat.de/dotfiles/
+#
+#
+#████████████████████████████████████████████████████████████████████████████
 
 # Should be called before compinit
 zmodload zsh/complist
 
 # from installing `brew install zsh-completions`
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+# if type brew &>/dev/null; then
+#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
     # The AUTOLOAD command loads a file containing shell commands. 
     # To find this file, Zsh will look in the directories of the Zsh file 
@@ -31,11 +37,6 @@ if type brew &>/dev/null; then
     # -z = function written in zshell style! check zshstyle file for more info
     autoload -Uz compinit
     compinit
-fi
+# fi
 
 _comp_options+=(globdots) # With hidden files
-
-
-
-
-

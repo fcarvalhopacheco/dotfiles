@@ -1,18 +1,25 @@
 #!/usr/bin/env zsh
 
+#████████████████████████████████████████████████████████████████████████████
 #
 #
-#  ███████╗███████╗████████╗██╗   ██╗██╗     ███████╗
-#  ╚══███╔╝██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝
-#    ███╔╝ ███████╗   ██║    ╚████╔╝ ██║     █████╗  
-#   ███╔╝  ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  
-#  ███████╗███████║   ██║      ██║   ███████╗███████╗
-#  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝
-#                                                    
-#  References
-#    : https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
-#    : https://thevaluable.dev/zsh-completion-guide-examples/
+#          ███████╗███████╗████████╗██╗   ██╗██╗     ███████╗
+#          ╚══███╔╝██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝
+#            ███╔╝ ███████╗   ██║    ╚████╔╝ ██║     █████╗  
+#           ███╔╝  ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  
+#          ███████╗███████║   ██║      ██║   ███████╗███████╗
+#          ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝
 #
+#           GitHub:  https://github.com/fcarvalhopacheco
+#
+#           References:
+#               - https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
+#               - https://thevaluable.dev/zsh-completion-guide-examples/
+#
+#
+#████████████████████████████████████████████████████████████████████████████
+#
+#############################################################################
 #  General rule:
 #    
 #    ```sh 
@@ -36,7 +43,8 @@
 #    + <argument> - Apply the style to the nth option or the nth argument.
 #                   It’s not available for many styles.
 #    + <tag> - Apply the style to a specific tag.
-
+#
+#############################################################################
 
 # Define completers
 zstyle ':completion:*' completer _extensions _complete _approximate
