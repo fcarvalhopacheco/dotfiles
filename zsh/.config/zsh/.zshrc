@@ -28,7 +28,7 @@ else
     print "Note: $ZDOTDIR/zshfunctions is unavailable."
 fi
 
-# zsh_add_file funtion 
+# zsh_add_file function 
 # Allows you to easily source a file in your zsh configuration 
 # directory ($ZDOTDIR) by passing its name as an argument. 
 # If the file exists, it will be sourced and its contents will be executed 
