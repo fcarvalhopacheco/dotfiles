@@ -5,3 +5,5 @@
 .zhistory
 .zcompdump
 .zsh_sessions
+plugins
+plugins/*
