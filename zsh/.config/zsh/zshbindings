@@ -26,14 +26,22 @@
 #████████████████████████████████████████████████████████████████████████████
 
 
-# Set up Vi mode key bindings
+# Enable vi mode key bindings
 bindkey -v
+
+# Set KEYTIMEOUT to 1 second for faster key recognition
 export KEYTIMEOUT=1
 
+# Bind 'v' in vicmd mode to edit-command-line (use Vim to edit current command line)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
+# Bind CTRL-v to edit-command-line (use Vim to edit current command line)
+bindkey -v '^v' edit-command-line
 
-if [[ -o menucomplete ]]; then 
-    # Use hjlk in menu selection (during completion)
+# Configure hjkl navigation during completion menu selection
+if [[ -o menucomplete ]]; then
     bindkey -M menuselect 'h' vi-backward-char
     bindkey -M menuselect 'k' vi-up-line-or-history
     bindkey -M menuselect 'j' vi-down-line-or-history
@@ -41,29 +49,5 @@ if [[ -o menucomplete ]]; then
     bindkey -M menuselect 'i' accept-and-menu-complete
     bindkey -M menuselect 'o' accept-and-infer-next-history
     bindkey -M menuselect '^d' clear-screen
-    bindkey -M menuselect 'u' undo                           # Undo
+    bindkey -M menuselect 'u' undo
 fi
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
-    esac
-}
-
-zle -N zle-keymap-select
-
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-
-zle -N zle-line-init
-
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-
-preexec() { 
-    echo -ne '\e[5 q' 
-} 
-
