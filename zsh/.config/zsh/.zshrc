@@ -38,12 +38,14 @@ zsh_add_file ".zshenv"
 zsh_add_file "zshoptions"
 zsh_add_file "zshaliases"
 zsh_add_file "zshcompctl"
+zsh_add_file "zshcursor"
 zsh_add_file "zshbindings"
 zsh_add_file "zshstyle"
 zsh_add_file "zshprompt"
 
 # Homebrew
 eval "$(/usr/local/bin/brew shellenv)"
+
 
 # Plugins
 zsh_add_completion "conda-incubator/conda-zsh-completion" false
