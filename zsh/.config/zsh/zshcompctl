@@ -20,23 +20,26 @@
 #
 #████████████████████████████████████████████████████████████████████████████
 
-# Should be called before compinit
+# `zmoLoad` loads the complist module. 
+# The `complist` module provides advanced completion features to the Zsh shell.
 zmodload zsh/complist
 
-# from installing `brew install zsh-completions`
-# if type brew &>/dev/null; then
-#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-    # The AUTOLOAD command loads a file containing shell commands. 
-    # To find this file, Zsh will look in the directories of the Zsh file 
-    # search path, defined in the variable $fpath. From there, it will try 
-    # to find a file named compinit.
-    # When the file COMPINIT is found, its contents will be loaded as a 
-    # function.
-    # -U = it doesn't expand alias
-    # -z = function written in zshell style! check zshstyle file for more info
-    autoload -Uz compinit
-    compinit
-# fi
+# The `autoload` command loads a file containing shell commands. 
+# To find this file, Zsh will look in the directories of the Zsh file 
+# search path, defined in the variable $fpath. From there, it will try 
+# to find a file named compinit.
+#
+# Once the compinit function is loaded, it is responsible for setting up 
+# the completion system for each shell session. 
+# It does this by defining the necessary completion functions and variables, 
+# as well as loading any completion modules that are needed.
+#
+# -U = it doesn't expand alias
+# -z = function written in zshell style! check zshstyle file for more info
+autoload -Uz compinit
+compinit
 
 _comp_options+=(globdots) # With hidden files
+
+
