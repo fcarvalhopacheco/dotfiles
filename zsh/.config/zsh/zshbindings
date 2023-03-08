@@ -16,6 +16,7 @@
 #    References:
 #       - https://www.strcat.de/dotfiles/
 #       - https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
+#       - https://thevaluable.dev/zsh-line-editor-configuration-mouseless/
 #
 #
 #    This script is based on code from https://github.com/zap-zsh/vim, 
@@ -27,6 +28,16 @@
 
 
 # Enable vi mode key bindings
+# A keymap is a set of keystrokes executing ZLE widgets. For each keymap, 
+# the mapping of keystrokes to widgets can be completely different.
+#
+# For example, if we want to bind CTRL+h to the series of keystrokes CTRL+L 
+# (which clear the screen by default) and then writes “hello”: 
+#     ```sh 
+#     bindkey -s '^h' '^l hello' 
+#     ```
+
+# Activate 
 bindkey -v
 
 # Set KEYTIMEOUT to 1 second for faster key recognition
@@ -51,3 +62,33 @@ if [[ -o menucomplete ]]; then
     bindkey -M menuselect '^d' clear-screen
     bindkey -M menuselect 'u' undo
 fi
+
+
+# Check: https://thevaluable.dev/zsh-install-configure-mouseless/#adding-text-objects
+# Load the select-bracketed and select-quoted widgets
+autoload -Uz select-bracketed select-quoted
+
+# Define the select-quoted widget
+zle -N select-quoted
+
+# Define the select-bracketed widget
+zle -N select-bracketed
+
+# Set up key bindings for the viopp and visual keymaps
+for km in viopp visual; do
+  # Bind the '-' key to the 'vi-up-line-or-history' function
+  bindkey -M $km -- '-' vi-up-line-or-history
+
+  # Bind select-quoted to the specified keys
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+
+  # Bind select-bracketed to the specified keys
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+
+
+
