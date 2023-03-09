@@ -61,3 +61,6 @@ export SAVEHIST=1000                  # Maximum events in history file
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
 # [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
 
+# Alacrity 
+. "$HOME/.cargo/env"
+
