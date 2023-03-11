@@ -46,10 +46,9 @@ export KEYTIMEOUT=1
 # Bind 'v' in vicmd mode to edit-command-line (use Vim to edit current command line)
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 
-# Bind CTRL-v to edit-command-line (use Vim to edit current command line)
-bindkey -v '^v' edit-command-line
+
 
 # Configure hjkl navigation during completion menu selection
 if [[ -o menucomplete ]]; then
