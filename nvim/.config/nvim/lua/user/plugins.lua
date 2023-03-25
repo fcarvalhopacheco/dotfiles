@@ -69,7 +69,9 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},             -- Enable LSP
             {'williamboman/mason.nvim'},           -- Optional
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
+            {"jose-elias-alvarez/null-ls.nvim"},   -- added after lsp-zero
+            {"jay-babu/mason-null-ls.nvim"},       -- added after lsp-zero
+            
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},         -- The completion plugin
             {'hrsh7th/cmp-nvim-lsp'},     -- Required
