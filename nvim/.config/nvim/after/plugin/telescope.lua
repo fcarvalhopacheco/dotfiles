@@ -1,3 +1,16 @@
+-- import telescope plugin safely
+local telescope_setup, telescope = pcall(require, "telescope")
+if not telescope_setup then
+  return
+end
+
+-- import telescope actions safely
+local actions_setup, actions = pcall(require, "telescope.actions")
+if not actions_setup then
+  return
+end
+
+
 require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
@@ -30,12 +43,18 @@ require('telescope').setup{
 }
 
 
+
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[P]roject [F]iles' })
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+    builtin.grep_string({ search = vim.fn.input("Grep > "), desc = '[P]roject [S]earch' });
 end)
-vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>pcb', builtin.current_buffer_fuzzy_find , {})
+vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = '[P]roject [G]rep' })
+vim.keymap.set('n', '<leader>pcb', builtin.current_buffer_fuzzy_find, { desc = '[P]roject [C]urrent [B]uffer' })
+vim.keymap.set('n', '<leader>pd', builtin.diagnostics, { desc = '[P]roject [D]iagnostics' })
+
+
+
+
 
