@@ -7,11 +7,11 @@
 #          ╚══███╔╝██╔════╝██║  ██║██╔════╝████╗  ██║██║   ██║
 #            ███╔╝ ███████╗███████║█████╗  ██╔██╗ ██║██║   ██║
 #           ███╔╝  ╚════██║██╔══██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝
-#       ██╗███████╗███████║██║  ██║███████╗██║ ╚████║ ╚████╔╝ 
-#       ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  
-#    
+#       ██╗███████╗███████║██║  ██║███████╗██║ ╚████║ ╚████╔╝
+#       ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝
+#
 #       GitHub:  https://github.com/fcarvalhopacheco
-#                                                             
+#
 #       Reference:
 #           - https://thevaluable.dev/zsh-install-configure-mouseless/
 #
@@ -24,11 +24,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-# GPG key 
+# GPG key
 export GPG_TTY=$(tty)
 
 # (( ${+*} )) = if variable is set don't set it anymore
-# Adpated from https://www.strcat.de/dotfiles/
+# Adapted from https://www.strcat.de/dotfiles/
 
 # Set default terminal emulator
 (( ${+TERMINAL} )) || export TERMINAL="alacritty"
@@ -37,7 +37,7 @@ export GPG_TTY=$(tty)
 (( ${+BROWSER} )) || export BROWSER="brave"
 
 # Term color
-(( ${+TERM} )) || export TERM="xterm-256color"
+(( ${+TERM} )) || export TERM=alacritty-direct
 
 
 # Set default directories
@@ -46,11 +46,11 @@ export DOTFILES="$HOME/.dotfiles"
 
 
 # Editor
-export VISUAL="nvim"                
-export EDITOR="nvim"                             
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 
-# Zsh enviroment variables
+# Zsh environment variables
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=1000                   # Maximum events for internal history
 export SAVEHIST=1000                  # Maximum events in history file
@@ -61,6 +61,5 @@ export SAVEHIST=1000                  # Maximum events in history file
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
 # [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
 
-# Alacrity 
+# Alacrity
 . "$HOME/.cargo/env"
-
