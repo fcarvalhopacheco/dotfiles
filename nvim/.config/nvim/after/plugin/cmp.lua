@@ -1,3 +1,6 @@
+-- Reference:
+-- https://www.youtube.com/watch?v=GuIcGxYqaQQ
+
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
 	return
@@ -44,6 +47,11 @@ local kind_icons = {
 	TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+
+--
+-- Reference for nvim-cmp configuration
+-- https://github.com/hrsh7th/nvim-cmp#recommended-configuration
+--
 
 cmp.setup({
 	snippet = {
