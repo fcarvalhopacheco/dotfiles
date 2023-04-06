@@ -39,18 +39,20 @@ opt.relativenumber = true -- set relative numbered lines
 -----------------------------------------------------------
 -- Tabs, indent and others
 -----------------------------------------------------------
+opt.textwidth = 79
 opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftwidth = 4 -- Shift 4 spaces when tab
+opt.shiftround = true
 opt.tabstop = 4 -- 1 tab == 4 spaces
 opt.smartindent = true -- Autoindent new lines
 opt.softtabstop = 4 -- Tab character that is 4 columns wide.
+opt.autoindent = true
 
 opt.numberwidth = 4 -- set number column width to 4 {default 4}
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 opt.wrap = false -- display lines as one long line
 opt.scrolloff = 8 -- Always 8 lines while moving up/down
 opt.sidescrolloff = 8
-opt.expandtab = true -- convert tabs to spaces
 opt.autowrite = true -- Automatically write buffer before running certain commands, including running Lua code
 opt.infercase = false
 
