@@ -1,3 +1,2 @@
 -- default configuration
-require('Comment').setup()
-
+require("Comment").setup()
