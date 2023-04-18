@@ -93,14 +93,14 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use("hrsh7th/cmp-nvim-lua")
 
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		requires = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	}) -- enhanced lsp uis   --
+	-- use({
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	branch = "main",
+	-- 	requires = {
+	-- 		{ "nvim-tree/nvim-web-devicons" },
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- }) -- enhanced lsp uis   --
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
