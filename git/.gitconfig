@@ -9,7 +9,7 @@
 [core]
     editor = nvim
     fscache = true
-    excludesfile = ~/.gitignore_gloval
+    excludesfile = ~/.gitignore_global
 
 [pull]
     ff = only
