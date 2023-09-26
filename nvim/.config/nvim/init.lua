@@ -47,7 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -71,7 +71,19 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refeopts = {} },
+    }
+  },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -89,20 +101,20 @@ require('lazy').setup({
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
-        vim.keymap.set({'n', 'v'}, ']c', function()
+        vim.keymap.set({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then return ']c' end
           vim.schedule(function() gs.next_hunk() end)
           return '<Ignore>'
-        end, {expr=true, buffer = bufnr, desc = "Jump to next hunk"})
-        vim.keymap.set({'n', 'v'}, '[c', function()
+        end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+        vim.keymap.set({ 'n', 'v' }, '[c', function()
           if vim.wo.diff then return '[c' end
           vim.schedule(function() gs.prev_hunk() end)
           return '<Ignore>'
-        end, {expr=true, buffer = bufnr, desc = "Jump to previous hunk"})
+        end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
       end,
     },
   },
-    {
+  {
     -- Theme inspired by Atom
     'rose-pine/neovim',
     priority = 1000,
@@ -137,7 +149,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -172,7 +184,7 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -181,7 +193,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -191,42 +203,95 @@ require('lazy').setup({
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-vim.o.mouse = "a" -- Enable mouse support
+vim.o.mouse = "a"               -- Enable mouse support
 vim.o.clipboard = "unnamedplus" -- Copy/paste to system clipboard
-vim.o.swapfile = false -- Don't use swapfile
+vim.o.swapfile = false          -- Don't use swapfile
 vim.o.completeopt = 'menuone,noselect,noinsert'
 
 
--- Set highlight on search
-vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
-
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
+vim.o.showmatch = true      -- Highlight matching parenthesis
+vim.o.foldmethod = "marker" -- Enable folding (default 'foldmarker')
+vim.o.colorcolumn = "79"    -- Line length marker at 80 columns
+vim.o.splitright = true     -- Vertical split to the right
+vim.o.splitbelow = true     -- Horizontal split to the bottom
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.o.linebreak = true          -- Wrap on word boundary
+vim.o.laststatus = 3            -- Set global statusline
 
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
+vim.o.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.o.cmdheight = 2             -- more space in the neovim command line for displaying messages
+vim.o.cursorline = true         -- highlight the current line
+vim.o.relativenumber = true     -- set relative numbered lines
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Basic Keymaps ]]
+-- Enable break indent
+vim.o.breakindent = true
 
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+
+-----------------------------------------------------------
+-- Tabs, indent and others
+-----------------------------------------------------------
+vim.o.textwidth = 79
+vim.o.expandtab = true   -- Use spaces instead of tabs
+vim.o.shiftwidth = 4     -- Shift 4 spaces when tab
+vim.o.shiftround = true
+vim.o.tabstop = 4        -- 1 tab == 4 spaces
+vim.o.smartindent = true -- Autoindent new lines
+vim.o.softtabstop = 4    -- Tab character that is 4 columns wide.
+vim.o.autoindent = true
+
+vim.o.numberwidth = 4    -- set number column width to 4 {default 4}
+vim.o.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+vim.o.wrap = false       -- display lines as one long line
+vim.o.scrolloff = 8      -- Always 8 lines while moving up/down
+vim.o.sidescrolloff = 8
+vim.o.autowrite = true   -- Automatically write buffer before running certain commands, including running Lua code
+vim.o.infercase = false
+
+-----------------------------------------------------------
+-- Memory, CPU
+-----------------------------------------------------------
+vim.o.timeoutlen = 300
+vim.o.hidden = true     -- Enable background buffers
+vim.o.history = 100     -- Remember N lines in history
+vim.o.lazyredraw = true -- Faster scrolling
+vim.o.synmaxcol = 240   -- Max column for syntax highlight
+vim.o.updatetime = 250  -- ms to wait for trigger an event
+
+-----------------------------------------------------------
+-- Others
+-----------------------------------------------------------
+
+vim.o.backup = false         -- creates a backup file
+vim.o.conceallevel = 0       -- so that `` is visible in markdown files
+vim.o.fileencoding = "utf-8" -- the encoding written to a file
+vim.o.hlsearch = false       -- highlight all matches on previous search pattern
+vim.o.incsearch = true
+vim.o.pumheight = 10         -- pop up menu height
+vim.o.timeoutlen = 1000      -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.o.undofile = true        -- enable persistent undo
+vim.o.writebackup = false    -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+vim.g.python3_host_prog = '/usr/local/bin/python3'
+
+
+-----------------------------------------------------------
+-- [[ Basic Keymaps ]]
+-----------------------------------------------------------
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -285,7 +350,9 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'yaml', 'bash','awk','json', 'latex','markdown','markdown_inline'},
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx',
+    'javascript', 'typescript', 'vimdoc', 'vim', 'yaml', 'bash', 'awk', 'json',
+    'latex', 'markdown', 'markdown_inline' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -407,7 +474,6 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 
--- CONFIGURATION EXAMPLES: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 local servers = {
   -- clangd = {},
