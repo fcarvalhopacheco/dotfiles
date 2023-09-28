@@ -129,23 +129,26 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = true,
-        theme = 'auto',
+        icons_enabled = false,
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
     },
   },
 
+
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    config = function()
+      require('ibl').setup {
+        char = '┊',
+        show_trailing_blankline_indent = false,
+      }
+    end,
   },
 
   -- "gc" to comment visual regions/lines
@@ -476,9 +479,12 @@ end
 
 
 local servers = {
+  jsonls = {},
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
+  marksman = {},
+  yamlls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
