@@ -1,0 +1,6 @@
+browser "open -a Safari %u"
+
+include /usr/local/share/doc/newsboat/contrib/colorschemes/solarized-dark
+
+
+
