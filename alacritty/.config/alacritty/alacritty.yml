@@ -1,6 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes/iterm.yaml
-
+  - ~/.config/alacritty/themes/themes/iterm2.yaml
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -24,7 +23,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: alacrity
 
 window:
   # Window dimensions (changes require restart)
