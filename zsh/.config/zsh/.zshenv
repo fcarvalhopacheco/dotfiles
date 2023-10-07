@@ -39,7 +39,13 @@ export GPG_TTY=$(tty)
 # Term color
 #20231006 Backup
 #(( ${+TERM} )) || export TERM=alacritty-direct
-(( ${+TERM} )) || export TERM="screen-256color"
+#(( ${+TERM} )) || export TERM="screen-256color"
+
+if [[ "$TERM" == "tmux-256color" ]]; then
+  export TERM=screen-256color
+fi
+
+
 
 # Set default directories
 export WORKSPACE="$HOME/Documents/workspace"
