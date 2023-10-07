@@ -1,2 +1,38 @@
-http://rss.cnn.com/rss/cnn_topstories.rss
+#
+#"query:Example2:(tags # \"example2\") and (title =~ \"example2\")"
+"query:YouTube:(tags # \"YouTube\") and (tags # \"Economy\")"
+#"query:YouTube:tags # \"YouTube\""
+#"query:Youtube:unread = \"yes\""
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg  "Economy" "Youtube" "~Fernando Ulrich" 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJdmdUp5BrsWsYVQUylCMLg "Linux" "YouTube" "~Arco Linux"               
 
+
+"query:Twitter:unread = \"yes\""
+https://nitter.poast.org/fernandoulrich/rss Twitter "~Ulrich" Economy
+https://nitter.poast.org/zerohedge/rss Twitter "~zerohedge"
+
+# Youtube
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg Youtube "~Ulrich" Economy
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw "Tech"  "Youtube"   #Linus Tech Tips
+#
+#
+# Twitter
+# https://nitter.poast.org/fernandoulrich/rss Twitter "~Ulrich" Economy
+# https://nitter.poast.org/zerohedge/rss Twitter "~zerohedge"
+# https://nitter.poast.org/PortaldoConhec1/rss Twitter Economy "~PortaldoConhecimento"
+
+═══
+# "query:YouTube:tags # \"YouTube\""
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg "Economy" "Youtube" #Ulrich
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw "Tech"  "Youtube"   #Linus Tech Tips
+#
+#
+# "query:Reddit:tags # \"Reddit\""
+# https://www.reddit.com/r/bash.rss "Reddit" "linux bash"
+# https://www.reddit.com/r/vim.rss "Reddit" "linux"
+
+
+# "query:Twitter:tags # \"Twitter\""
+# https://rss.app/feeds/Esfj74MeUNGZ0om2.xml "Twitter" "Economy" "~Ulrich"
+# https://rss.app/feeds/cPWpv6wrccnYU8Ss.xml "Personal Dev." "Twitter" "~Tferris" 
+# https://rss.app/feeds/EKcUyeQH8L7pBL2I.xml "Economy" "Twitter" "~zerohedge"

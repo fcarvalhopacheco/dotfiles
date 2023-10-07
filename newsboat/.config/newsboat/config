@@ -1,6 +1,53 @@
-browser "open -a Safari %u"
-
+# general settings
 include /usr/local/share/doc/newsboat/contrib/colorschemes/solarized-dark
 
+auto-reload yes 
+reload-time 150                     # update all feeds every x minutes
+
+# unbind keys
+#unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+#bind-key l open
+#bind-key h quit
 
 
+browser "open -a 'Brave Browser' %u"
+macro w set browser "open -a 'w3m' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
+macro m set browser "open -a 'mpv' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
+
+
+highlight article "^Feed:.*" magenta default 
+highlight article "^Title:.*" yellow default bold
+highlight article "^Author:.*" green default
+highlight article "^Date:.*" color223 default
+highlight article "^Link:.*" blue default
+highlight article "^Flags:.*" color9 default
+highlight article "\\[[0-9][0-9]*\\]" color66 default bold
+highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
+
+
+highlight feedlist "\\((Youtube|Economy)\\) .*" red
+highlight feedlist "\\((Youtube|Linux)\\) .*" green
+highlight feedlist "\\(Twitter\\) .*" blue
+#highlight feedlist "\\(Reddit\\) .*" green
+#highlight feedlist "\\(Podcast\\) .*" magenta
+#highlight feedlist "\\(Blog\\) .*" cyan
+highlight feedlist "\\(Reddit\\) .*" color166 
+
+
+feedlist-format "%?T?║%4i %n %8u (%T) %t &╠═══════════════════════════════════════════════════════════════%t?"
+
+highlight feedlist "[╒╘╞]═.*═[╛╕╡]" yellow default bold
+highlight feedlist "[║│]" yellow default bold
+
+#highlight feedlist "[║│]" color3 color0
+highlight feedlist "╠═.*" yellow default bold
+#highlight feedlist "╠═.*" color3 color0 
