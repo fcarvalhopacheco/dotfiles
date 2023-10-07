@@ -37,8 +37,9 @@ export GPG_TTY=$(tty)
 (( ${+BROWSER} )) || export BROWSER="brave"
 
 # Term color
-(( ${+TERM} )) || export TERM=alacritty-direct
-
+#20231006 Backup
+#(( ${+TERM} )) || export TERM=alacritty-direct
+(( ${+TERM} )) || export TERM="screen-256color"
 
 # Set default directories
 export WORKSPACE="$HOME/Documents/workspace"
