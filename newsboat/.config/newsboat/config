@@ -44,10 +44,9 @@ highlight feedlist "\\(Reddit\\) .*" color166
 
 
 feedlist-format "%?T?║%4i %n %8u (%T) %t &╠═══════════════════════════════════════════════════════════════%t?"
+#feedlist-format "%?T?║%4i %n %8u (%T) &╠%-8t  ═══════════════════════════════════════════════════════════════?"
 
 highlight feedlist "[╒╘╞]═.*═[╛╕╡]" yellow default bold
 highlight feedlist "[║│]" yellow default bold
 
-#highlight feedlist "[║│]" color3 color0
-highlight feedlist "╠═.*" yellow default bold
-#highlight feedlist "╠═.*" color3 color0 
+highlight feedlist "╠═.*" color3 color0 
