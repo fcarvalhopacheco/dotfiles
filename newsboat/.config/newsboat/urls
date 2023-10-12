@@ -19,6 +19,11 @@ https://nitter.poast.org/washingtonpost/rss Twitter "~washingtonpost"
 https://nitter.poast.org/BBCBreaking/rss  Twitter "~/BBCBreaking"
 
 
+"query:Surf:unread = \"yes\""
+https://www.ndbc.noaa.gov/data/latest_obs/51001.rss Surf "~51001 NORTHWESTERN HAWAII ONE - 188 NM NW of Kauai Island, HI"
+https://www.ndbc.noaa.gov/data/latest_obs/51201.rss Surf "~51291 Waimea"
+http://cdip.ucsd.edu/rss/106.xml Surf "~CDIP WAIMEA BAY, HI"
+
 # Youtube
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg Youtube "~Ulrich" Economy
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw "Tech"  "Youtube"   #Linus Tech Tips

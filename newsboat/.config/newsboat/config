@@ -37,6 +37,7 @@ highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
 highlight feedlist "\\((Youtube|Economy)\\) .*" red
 highlight feedlist "\\((Youtube|Linux)\\) .*" green
 highlight feedlist "\\(Twitter\\) .*" blue
+highlight feedlist "\\(Surf\\) .*" color120
 #highlight feedlist "\\(Reddit\\) .*" green
 #highlight feedlist "\\(Podcast\\) .*" magenta
 #highlight feedlist "\\(Blog\\) .*" cyan
