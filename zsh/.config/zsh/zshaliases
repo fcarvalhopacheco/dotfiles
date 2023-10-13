@@ -71,3 +71,5 @@ alias gd='git diff'
 
 # Conda
 alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source $ZDOTDIR/.zshrc"
+
+alias nb='newsboat'

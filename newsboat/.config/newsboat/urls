@@ -1,5 +1,12 @@
 #
-#"query:Example2:(tags # \"example2\") and (title =~ \"example2\")"
+"query:News:unread = \"yes\""
+https://lifehacker.com/rss News "~LifeHacker"
+https://gizmodo.com/rss News "~Gizmodo"
+https://flowingdata.com/feed News "~Flowing data"
+https://hiddenbrain.org/feed/ News "~Hidden Brain"
+https://www.sciencedaily.com/rss/all.xml News "~Science Daily"
+http://rss.sciam.com/ScientificAmerican-Global News "~Scientific American Global "
+#
 "query:YouTube:(tags # \"YouTube\") and (tags # \"Economy\")"
 #"query:YouTube:tags # \"YouTube\""
 #"query:Youtube:unread = \"yes\""
@@ -13,16 +20,19 @@ https://nitter.poast.org/zerohedge/rss Twitter "~zerohedge"
 https://nitter.poast.org/PortaldoConhec1/rss Twitter "~Portal do Conhecimento"
 https://nitter.poast.org/FT/rss Twitter "~Financial Times"
 https://nitter.poast.org/AJEnglish/rss Twitter "~AJEnglish"
-https://nitter.poast.org/XHNews/ress Twitter "~XHNews"
-https://nitter.poast.org/NDT/rss Twitter "~NDT"
+https://nitter.poast.org/XHNews/rss Twitter "~XHNews"
 https://nitter.poast.org/washingtonpost/rss Twitter "~washingtonpost"
-https://nitter.poast.org/BBCBreaking/rss  Twitter "~/BBCBreaking"
-
+https://nitter.poast.org/BBCBreaking/rss  Twitter "~BBCBreaking"
+https://nitter.poast.org/ThePrimeagen/rss Twitter "~The Primeagen"
 
 "query:Surf:unread = \"yes\""
-https://www.ndbc.noaa.gov/data/latest_obs/51001.rss Surf "~51001 NORTHWESTERN HAWAII ONE - 188 NM NW of Kauai Island, HI"
-https://www.ndbc.noaa.gov/data/latest_obs/51201.rss Surf "~51291 Waimea"
+https://www.ndbc.noaa.gov/rss/ndbc_obs_search.php?lat=24.359N&lon=162.081W Surf ""
+https://www.ndbc.noaa.gov/data/latest_obs/51001.rss Surf "51001 NORTHWESTERN HAWAII ONE - 188 NM NW of Kauai Island, HI"
+https://www.ndbc.noaa.gov/data/latest_obs/51201.rss Surf "51291 Waimea"
 http://cdip.ucsd.edu/rss/106.xml Surf "~CDIP WAIMEA BAY, HI"
+
+
+
 
 # Youtube
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg Youtube "~Ulrich" Economy

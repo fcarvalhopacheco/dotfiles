@@ -34,6 +34,7 @@ highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
 highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
 
 
+highlight feedlist "\\(News\\) .*" color199
 highlight feedlist "\\((Youtube|Economy)\\) .*" red
 highlight feedlist "\\((Youtube|Linux)\\) .*" green
 highlight feedlist "\\(Twitter\\) .*" blue
