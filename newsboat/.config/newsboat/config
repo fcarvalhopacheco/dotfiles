@@ -53,3 +53,7 @@ highlight feedlist "[╒╘╞]═.*═[╛╕╡]" yellow default bold
 highlight feedlist "[║│]" yellow default bold
 
 highlight feedlist "╠═.*" color3 color0 
+
+
+datetime-format "%b %d %H:%M"
+
