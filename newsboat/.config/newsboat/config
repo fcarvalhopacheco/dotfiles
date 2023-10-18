@@ -18,10 +18,18 @@ bind-key k up
 #bind-key l open
 #bind-key h quit
 
+# Using Brave
+#browser "open -a 'Brave Browser' %u"
+#macro w set browser "open -a 'w3m' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
+#macro m set browser "open -a 'mpv' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
 
-browser "open -a 'Brave Browser' %u"
-macro w set browser "open -a 'w3m' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
-macro m set browser "open -a 'mpv' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
+# Using w3m
+browser "w3m %u"
+
+macro w set browser "w3m %u"; open-in-browser ; set browser "w3m %u"
+macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+macro b set browser "open -a 'Brave Browser' %u"; open-in-browser ; set browser "open -a 'Brave Browser' %u"
+
 
 
 highlight article "^Feed:.*" magenta default 
