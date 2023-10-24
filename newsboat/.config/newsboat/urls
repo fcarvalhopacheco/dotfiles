@@ -8,6 +8,9 @@ https://www.sciencedaily.com/rss/all.xml News "~Science Daily"
 http://rss.sciam.com/ScientificAmerican-Global News "~Scientific American Global "
 https://usgoship.ucsd.edu/feed/ News ""
 https://datascience.hawaii.edu/feed/ News ""
+https://opentrackers.org/feed/ News ""
+
+
 #
 "query:YouTube:(tags # \"YouTube\") and (tags # \"Economy\")"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLJkh3QjHsLtK0LZFd28oGg  "Economy" "Youtube" "~Fernando Ulrich" 
