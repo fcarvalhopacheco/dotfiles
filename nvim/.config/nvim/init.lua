@@ -290,6 +290,44 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-----------------------------------------------------------
+-- [[ My keymap]]
+-----------------------------------------------------------
+
+-- Space + pv == Netrw
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = 'Netrw' })
+
+-- When in (v)isual mode, you can press (J) or (K)
+-- to (m)ove the list down/up
+-- BONUS: if you have a if/end statements you can move up/down with the below
+-- command. the program will automatically indent the code!!!! INSANE GOOD
+-- test it!!!
+-- if true then
+--
+-- end
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+
+
+-- `Ctrl + d` and `Ctrl + u` are half page jumping + zz, the cursor  will
+-- stay in the middle of the page.
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+
+-- Allow us to search terms in the middle of the page.
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+
+-- Ex: You highlight and copy a word. Then you highlight another word
+-- and you paste the old word over the new word. You will loose the yank from
+-- the "old" word if you. The following remap <leader>p will delete the new
+-- highlighted word into the void register and then paste it over
+-- In summary: the old(first) word will be always preserved...
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
