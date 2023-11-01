@@ -29,8 +29,8 @@ https://nitter.poast.org/BBCBreaking/rss  Twitter "~BBCBreaking"
 https://nitter.poast.org/ThePrimeagen/rss Twitter "~The Primeagen"
 
 "query:Surf:unread = \"yes\""
-#https://www.ndbc.noaa.gov/data/latest_obs/51001.rss Surf ""
 #https://www.ndbc.noaa.gov/data/latest_obs/51201.rss Surf "51291 Waimea"
 http://cdip.ucsd.edu/rss/106.xml Surf "~CDIP WAIMEA BAY, HI"
+https://www.ndbc.noaa.gov/data/latest_obs/51001.rss Surf ""
 
 
