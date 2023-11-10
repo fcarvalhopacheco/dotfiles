@@ -6,8 +6,8 @@ return {
       'renerocksai/calendar-vim'
     },
     config = function()
-      local home = vim.fn.expand("~/Documents/zettelkasten")
-      local work = vim.fn.expand("~/Documents/zettelkasten/work")
+      local home = vim.fn.expand("/Users/fcp/Documents/zettelkasten")
+      local work = vim.fn.expand("/Users/fcp/Documents/zettelkasten/work")
       require('telekasten').setup({
         home                        = home,
         -- if true, telekasten will be enabled when opening a note within the configured home
@@ -111,7 +111,7 @@ return {
         -- - prefer_new_note: use `new_note` template
         -- - smart: if day or week is detected in title, use daily / weekly templates (default)
         -- - always_ask: always ask before creating a note
-        template_handling      = "smart",
+        template_handling      = "always_ask",
 
         -- path handling:
         --   this applies to:
@@ -134,52 +134,66 @@ return {
         --     - same_as_current: put all new notes in the dir of the current note if
         --                        present or else in home
         --                        except for notes/with/subdirs/in/title.
-        new_note_location      = "same_as_current",
+        new_note_location      = 'smart',
 
         -- should all links be updated when a file is renamed
         rename_update_links    = true,
 
-        vaults                 = {
-          work = {
-            -- configuration for WORK vault.
-            home                        = work,
-            take_over_my_home           = true,
-            auto_set_filetype           = true,
-            dailies                     = home .. '/' .. 'daily',
-            weeklies                    = home .. '/' .. 'weekly',
-            templates                   = home .. '/' .. 'templates',
-            image_subdir                = "img",
-            extension                   = ".md",
-            new_note_filename           = "uuid-title",
-            uuid_type                   = "%Y%m%d%H%M",
-            uuid_sep                    = "-",
-            follow_creates_nonexisting  = true,
-            dailies_create_nonexisting  = true,
-            weeklies_create_nonexisting = true,
-            template_new_note           = home .. '/' .. 'templates/new_note.md',
-            template_new_daily          = home .. '/' .. 'templates/daily.md',
-            template_new_weekly         = home .. '/' .. 'templates/weekly.md',
-            template_new_work           = home .. '/' .. 'templates/memory_help.md',
-            image_link_style            = "markdown",
-            plug_into_calendar          = true,
-            calendar_opts               = {
-              weeknm = 1,
-              calendar_monday = 1,
-              calendar_mark = 'left-fit',
-            },
-            close_after_yanking         = false,
-            insert_after_inserting      = true,
-            tag_notation                = "#tag",
-            command_palette_theme       = "ivy",
-            show_tags_theme             = "ivy",
-            subdirs_in_links            = true,
-            template_handling           = "smart",
-            new_note_location           = "same_as_current",
-            rename_update_links         = true,
-          }
-        },
+        -- vaults                 = {
+        --   work = {
+        --     -- configuration for WORK vault.
+        --     home                        = work,
+        --     take_over_my_home           = true,
+        --     auto_set_filetype           = true,
+        --     dailies                     = home .. '/' .. 'daily',
+        --     weeklies                    = home .. '/' .. 'weekly',
+        --     templates                   = home .. '/' .. 'templates',
+        --     image_subdir                = "img",
+        --     extension                   = ".md",
+        --     new_note_filename           = "uuid-title",
+        --     uuid_type                   = "%Y%m%d%H%M",
+        --     uuid_sep                    = "-",
+        --     follow_creates_nonexisting  = true,
+        --     dailies_create_nonexisting  = true,
+        --     weeklies_create_nonexisting = true,
+        --     template_new_note           = home .. '/' .. 'templates/new_note.md',
+        --     template_new_daily          = home .. '/' .. 'templates/daily.md',
+        --     template_new_weekly         = home .. '/' .. 'templates/weekly.md',
+        --     template_new_work           = home .. '/' .. 'templates/memory_help.md',
+        --     image_link_style            = "markdown",
+        --     plug_into_calendar          = true,
+        --     calendar_opts               = {
+        --       weeknm = 1,
+        --       calendar_monday = 1,
+        --       calendar_mark = 'left-fit',
+        --     },
+        --     close_after_yanking         = false,
+        --     insert_after_inserting      = true,
+        --     tag_notation                = "#tag",
+        --     command_palette_theme       = "ivy",
+        --     show_tags_theme             = "ivy",
+        --     subdirs_in_links            = true,
+        --     template_handling           = "always_ask",
+        --     new_note_location           = "smart",
+        --     rename_update_links         = true,
+        --   }
+        -- },
 
       })
+      vim.cmd([[
+      hi tklink ctermfg=72 guifg=#689d6a cterm=bold,underline gui=bold,underline
+      hi tkBrackets ctermfg=gray guifg=gray
+
+      " real yellow
+      hi tkHighlight ctermbg=yellow ctermfg=darkred cterm=bold guibg=yellow guifg=darkred gui=bold
+      " gruvbox
+      "hi tkHighlight ctermbg=214 ctermfg=124 cterm=bold guibg=#fabd2f guifg=#9d0006 gui=bold
+
+      hi link CalNavi CalRuler
+      hi tkTagSep ctermfg=gray guifg=gray
+      hi tkTag ctermfg=175 guifg=#d3869b
+
+      ]])
     end,
   },
 
