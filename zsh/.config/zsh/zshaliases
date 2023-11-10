@@ -72,4 +72,11 @@ alias gd='git diff'
 # Conda
 alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source $ZDOTDIR/.zshrc"
 
+# Newsboat
 alias nb='newsboat'
+
+
+# Nvim
+alias note='nvim +"Telekasten new_note"'
+#alias todo='nvim +"Telekasten goto_today"'
+
