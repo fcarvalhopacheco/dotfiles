@@ -23,6 +23,7 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "bd103502252027434ec42f628d2dbf54821d4ce6" },
   "plenary.nvim": { "branch": "master", "commit": "9ce85b0f7dcfe5358c0be937ad23e456907d410b" },
   "telekasten.nvim": { "branch": "main", "commit": "3fd50c62c1ed2f973ce8639c1218445e4e91a962" },
+  "telescope-bibtex.nvim": { "branch": "master", "commit": "4adb8f494b2063a74766e1253f3d18e99117e5f4" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "54930e1abfc94409e1bb9266e752ef8379008592" },
   "vim-fugitive": { "branch": "master", "commit": "99db68d9b3304580bd383da7aaee05c7a954a344" },
