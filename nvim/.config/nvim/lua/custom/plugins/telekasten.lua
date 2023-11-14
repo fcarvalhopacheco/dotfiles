@@ -34,7 +34,7 @@ return {
       map("n", "<leader>zsb", ":lua require('telekasten').show_backlinks()<CR>", { desc = "[S]how [B]acklinks" })
       map("n", "<leader>zst", ":lua require('telekasten').show_tags()<CR>", { desc = "[S]how [T]ags" })
       map("n", "<leader>z#", ":lua require('telekasten').show_tags()<CR>", { desc = "[#] == tags" })
-      map("i", "<leader>z#", "<cmd>:lua require('telekasten').show_tags({i = true})<CR>", { desc = "[#] == tags" })
+      -- map("i", "<leader>z#", "<cmd>:lua require('telekasten').show_tags({i = true})<CR>", { desc = "[#] == tags" })
 
       -- GOTO
       map("n", "<leader>zgt", ":lua require('telekasten').goto_today()<CR>", { desc = "[T]oday" })
