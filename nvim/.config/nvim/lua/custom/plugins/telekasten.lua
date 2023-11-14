@@ -23,40 +23,29 @@ return {
 
       -- FIND/FOLLOW
       map("n", "<leader>zfn", ":lua require('telekasten').find_notes()<CR>", { desc = "[F]ind [N]otes" })
-      map("n", "<leader>zfd", ":lua require('telekasten').find_daily_notes()<CR>",
-        { desc = "[F]ind [D]aily notes" })
-      map("n", "<leader>zfw", ":lua require('telekasten').find_weekly_notes()<CR>",
-        { desc = "[F]ind [W]eekly notes" })
-      map("n", "<leader>zff", ":lua require('telekasten').find_friends()<CR>",
-        { desc = "[F]ind [F]riends" })
+      map("n", "<leader>zfd", ":lua require('telekasten').find_daily_notes()<CR>", { desc = "[F]ind [D]aily notes" })
+      map("n", "<leader>zfw", ":lua require('telekasten').find_weekly_notes()<CR>", { desc = "[F]ind [W]eekly notes" })
+      map("n", "<leader>zff", ":lua require('telekasten').find_friends()<CR>", { desc = "[F]ind [F]riends" })
       map("n", "<leader>zfl", ":lua require('telekasten').follow_link()<CR>", { desc = "[F]ollow [L]ink" })
-
       -- SEARCH/SHOW
-      map("n", "<leader>zsn", ":lua require('telekasten').search_notes()<CR>",
-        { desc = "[S]earch [N]otes" })
-      map("n", "<leader>zsc", ":lua require('telekasten').show_calendar()<CR>",
-        { desc = "[S]how [C]alendar" })
+      map("n", "<leader>zsn", ":lua require('telekasten').search_notes()<CR>", { desc = "[S]earch [N]otes" })
+      map("n", "<leader>zsc", ":lua require('telekasten').show_calendar()<CR>", { desc = "[S]how [C]alendar" })
       map("n", "<leader>zC", ":CalendarT<CR>", { desc = "[C]alendar" })
-      map("n", "<leader>zsb", ":lua require('telekasten').show_backlinks()<CR>",
-        { desc = "[S]how [B]acklinks" })
+      map("n", "<leader>zsb", ":lua require('telekasten').show_backlinks()<CR>", { desc = "[S]how [B]acklinks" })
       map("n", "<leader>zst", ":lua require('telekasten').show_tags()<CR>", { desc = "[S]how [T]ags" })
       map("n", "<leader>z#", ":lua require('telekasten').show_tags()<CR>", { desc = "[#] == tags" })
-      map("i", "<leader>z#", "<cmd>:lua require('telekasten').show_tags({i = true})<CR>",
-        { desc = "[#] == tags" })
+      map("i", "<leader>z#", "<cmd>:lua require('telekasten').show_tags({i = true})<CR>", { desc = "[#] == tags" })
 
       -- GOTO
       map("n", "<leader>zgt", ":lua require('telekasten').goto_today()<CR>", { desc = "[T]oday" })
-      map("n", "<leader>zgw", ":lua require('telekasten').goto_thisweek()<CR>",
-        { desc = "[W]eek" })
+      map("n", "<leader>zgw", ":lua require('telekasten').goto_thisweek()<CR>", { desc = "[W]eek" })
 
       -- NEW NOTES
       map("n", "<leader>znn", ":lua require('telekasten').new_note()<CR>", { desc = "[N]ote" })
-      map("n", "<leader>znt", ":lua require('telekasten').new_templated_note()<CR>",
-        { desc = "[T]emplated note" })
+      map("n", "<leader>znt", ":lua require('telekasten').new_templated_note()<CR>", { desc = "[T]emplated note" })
 
       -- OTHERS
-      map("n", "<leader>zy", ":lua require('telekasten').yank_notelink()<CR>",
-        { desc = "[Y]ank notelink" })
+      map("n", "<leader>zy", ":lua require('telekasten').yank_notelink()<CR>", { desc = "[Y]ank notelink" })
       map("n", "<leader>zI", ":lua require('telekasten').insert_img_link({ i=true })<CR>",
         { desc = "[I]nsert img link " })
       map("n", "<leader>zp", ":lua require('telekasten').preview_img()<CR>", { desc = "[P]review img" })
