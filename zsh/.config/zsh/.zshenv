@@ -65,6 +65,7 @@ export SAVEHIST=1000                  # Maximum events in history file
 
 # PATH
 [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
+[ -d "${HOME}/.config/zsh/scripts" ] && PATH="${PATH}:${HOME}/.config/zsh/scripts"
 [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
 # [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
 
