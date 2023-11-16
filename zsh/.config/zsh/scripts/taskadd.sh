@@ -1,16 +1,12 @@
 #!/bin/bash
+
 clear
 
 echo "==================== Task Creation ===================="
 
 select_project() {
     echo -e "\nSelect a project:"
-    select project in \
-        ACO \ 
-        HOT \
-        PERSONAL \
-        WHOTS 
-    do
+    select project in ACO HOT PERSONAL WHOTS; do
         echo -e "\nSelected project: $project"
         echo "----------------------------------------------------"
         break
@@ -18,7 +14,7 @@ select_project() {
 }
 
 enter_cruise_number() {
-    if [[ "$project" == "HOT" || "$project" == "WHOTS" ]]; then
+    if [[ "$project" == "HOT" || "$project" == "WHOTS" || "$project" == "ACO" ]]; then
         read -p "Enter Cruise Number: " cruise_number
         echo -e "\nEntered Cruise Number: $cruise_number"
         echo "----------------------------------------------------"
@@ -27,68 +23,107 @@ enter_cruise_number() {
     fi
 }
 
-select_what() {
-    echo -e "Select what you are working on:"
-    select what in \
-        "autosal" \
-        "bgc" \
-        "bottles" \
-        "ctd" \
-        "github" \
-        "ifcb" \
-        "ladcp" \
-        "metobs" \
-        "microcats" \
-        "mooredAdcp" \
-        "others" \
-        "shipAdcp" \
-        "tsg" \
-        "underway" \
-        "uvp" \
-        "yearReview"
+select_personal_details() {
+    if [[ "$project" == "PERSONAL" ]]; then
+        echo -e "Select Personal Activity:\n"
+        select personal_activity in \
+            "HealthAndFitness" \
+            "PersonalDevelopment" \
+            "HobbiesAndLeisure" \
+            "FamilyAndRelationships" \
+            "HouseholdManagement" \
+            "PersonalFinance"; do
+            echo -e "\nSelected Activity: $personal_activity"
+            echo "----------------------------------------------------"
+            break
+        done
 
-    do
-        echo -e "\nSelected what: $what"
-        echo "----------------------------------------------------"
-        break
-    done
+        echo -e "Select Personal Task:\n"
+        select personal_task in \
+            "Workout" \
+            "ReadBook" \
+            "FamilyTime" \
+            "BudgetPlanning" \
+            "HouseCleaning" \
+            "InvestmentResearch"; do
+            echo -e "\nSelected Task: $personal_task"
+            echo "----------------------------------------------------"
+            break
+        done
+    fi
 }
 
-select_task_type() {
-    echo -e "Select task type:"
-    select task_type in \
-        "analyzes" \
-        "codeDevelopment" \
-        "conference" \
-        "cruiseParticipation" \
-        "cruisePreparation" \
-        "dataAnalysis" \
-        "dataArchive" \
-        "dataDissimination" \
-        "dataManagement" \
-        "dataProcessing" \
-        "dataReport" \
-        "dataQC" \
-        "dataRequest" \
-        "instrumention" \
-        "meeting" \
-        "others" \
-        "personalDev" \
-        "systemAdm"
-    do
-        echo -e "\nSelected task type: $task_type"
-        echo "----------------------------------------------------"
-        break
-    done
+select_what_and_task_type() {
+    if [[ "$project" != "PERSONAL" ]]; then
+        echo -e "Select 'What' you are working on:\n"
+        select what in \
+            "AutoSal" \
+            "BGC" \
+            "Bottles" \
+            "CTD" \
+            "GitHub" \
+            "IFCB" \
+            "LADCP" \
+            "MetObs" \
+            "MicroCats" \
+            "MooredADCP" \
+            "Others" \
+            "ShipADCP" \
+            "TSG" \
+            "Underway" \
+            "UVP" \
+            "YearReview"; do
+            echo -e "\nSelected What: $what"
+            echo "----------------------------------------------------"
+            break
+        done
+
+        echo -e "Select Task Type:\n"
+        select task_type in \
+            "Analyzes" \
+            "CodeDevelopment" \
+            "Conference" \
+            "CruiseParticipation" \
+            "CruisePreparation" \
+            "DataAnalysis" \
+            "DataArchive" \
+            "DataDissimination" \
+            "DataManagement" \
+            "DataProcessing" \
+            "DataReport" \
+            "DataQC" \
+            "DataRequest" \
+            "Instrumention" \
+            "Meeting" \
+            "Others" \
+            "PersonalDev" \
+            "SystemAdm"; do
+            echo -e "\nSelected Task Type: $task_type"
+            echo "----------------------------------------------------"
+            break
+        done
+    fi
 }
 
 select_project
 enter_cruise_number
-select_what
-select_task_type
+select_personal_details
+select_what_and_task_type
 
 # Construct the task description
-task_desc="[$project][$cruise_number][$what][$task_type]"
+if [[ "$project" == "PERSONAL" ]]; then
+    task_desc="[$project][$personal_activity][$personal_task]"
+else
+    task_desc="[$project][$cruise_number][$what][$task_type]"
+fi
+
 
 # Add the task in Taskwarrior
-task add "$task_desc" project:$project +$cruise_number +$task_type
+if [[ "$project" == "PERSONAL" ]]; then
+    tags="tags:$personal_activity,$personal_task"
+    task add "$task_desc" project:$project $tags
+else
+    tags="tags:$cruise_number,$what,$task_type"
+    task add "$task_desc" project:$project $tags
+fi
+
