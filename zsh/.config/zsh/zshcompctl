@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+#zmodload zsh/zprof
 
 #████████████████████████████████████████████████████████████████████████████
 #
@@ -42,4 +43,5 @@ compinit
 
 _comp_options+=(globdots) # With hidden files
 
+# zprof
 
