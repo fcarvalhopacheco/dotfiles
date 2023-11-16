@@ -1,3 +1,5 @@
+# run `brew bundle dump --force`
+
 tap "epk/epk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -34,6 +36,8 @@ brew "ninja"
 brew "node"
 brew "ripgrep"
 brew "stow"
+brew "task"
+brew "taskd"
 brew "tmux"
 brew "tree"
 brew "unzip"
