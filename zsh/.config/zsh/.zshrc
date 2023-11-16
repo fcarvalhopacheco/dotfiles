@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# zmodload zsh/zprof
+#zmodload zsh/zprof
 
 #████████████████████████████████████████████████████████████████████████████
 #
@@ -35,7 +35,8 @@ fi
 # If the file exists, it will be sourced and its contents will be executed 
 # in the current shell environment. If the file does not exist, an error msg
 # will be displayed on the prompt.
-zsh_add_file ".zshenv"
+
+#zsh_add_file ".zshenv"       - .zshenv is automatically sourced by Zsh for each shell session
 zsh_add_file "zshoptions"
 zsh_add_file "zshaliases"
 zsh_add_file "zshcompctl"
@@ -58,3 +59,4 @@ eval "$(/usr/local/bin/brew shellenv)"
 # Zoxide
 eval "$(zoxide init zsh)"
 
+# zprof
