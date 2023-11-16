@@ -81,8 +81,6 @@
 #     __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
 # }
 
-
-
 # Source the git-prompt script
 source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
 
@@ -92,12 +90,12 @@ setopt prompt_subst
 # Load colors for styling the prompt
 autoload -U colors && colors
 
-# Git prompt customizations
+# Git prompt customizations for minimal impact
 GIT_PS1_SHOWDIRTYSTATE=1        # Show '*' if there are unstaged changes
-GIT_PS1_SHOWSTASHSTATE=1        # Show '$' if there are stashes
-GIT_PS1_SHOWUNTRACKEDFILES=1    # Show '%' if there are untracked files
+GIT_PS1_SHOWSTASHSTATE=0        # Disable showing stashes for performance
+GIT_PS1_SHOWUNTRACKEDFILES=0    # Disable showing untracked files for performance
 GIT_PS1_SHOWUPSTREAM="auto"     # Show tracking branch differences
-GIT_PS1_SHOWCOLORHINTS=1        # Enable colored hints in the prompt
+GIT_PS1_SHOWCOLORHINTS=0        # Disable colored hints for performance
 
 # Define the precmd function to update the prompt before each command
 precmd() {
@@ -106,10 +104,11 @@ precmd() {
     local status_symbol="%(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )"
     local current_dir="%{$fg[cyan]%}%c%{$reset_color%}"
 
-    # Use __git_ps1 to update the prompt with Git status
-    __git_ps1 "$user_host $status_symbol $current_dir" " %B%{$reset_color%}" " (%s)"
+    # Set the prompt with the Git status integrated directly
+    PS1="$user_host $status_symbol $current_dir$(__git_ps1 ' (%s)') %B%{$reset_color%}"
 }
 
 # Register the precmd function to be called before each command execution
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd
+
