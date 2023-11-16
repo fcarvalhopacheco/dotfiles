@@ -78,5 +78,6 @@ GIT_PS1_SHOWCOLORHINTS=1
 
 # Define the precmd function
 precmd() {
-    __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
+    __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
+   #__git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
 }
