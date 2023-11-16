@@ -23,15 +23,16 @@ enter_cruise_number() {
     fi
 }
 
+
 select_personal_details() {
     if [[ "$project" == "PERSONAL" ]]; then
         echo -e "Select Personal Activity:\n"
         select personal_activity in \
-            "HealthAndFitness" \
-            "PersonalDevelopment" \
-            "HobbiesAndLeisure" \
-            "FamilyAndRelationships" \
-            "HouseholdManagement" \
+                "FamilyAndRelationships" \
+                "HealthAndFitness" \
+                "HobbiesAndLeisure" \
+                "HouseholdManagement" \
+                "PersonalDevelopment" \
             "PersonalFinance"; do
             echo -e "\nSelected Activity: $personal_activity"
             echo "----------------------------------------------------"
@@ -40,12 +41,27 @@ select_personal_details() {
 
         echo -e "Select Personal Task:\n"
         select personal_task in \
-            "Workout" \
-            "ReadBook" \
-            "FamilyTime" \
-            "BudgetPlanning" \
-            "HouseCleaning" \
-            "InvestmentResearch"; do
+                "ArtProjects" \
+                "BookReading" \
+                "BudgetPlanning" \
+                "ExerciseRoutine" \
+                "FamilyTime" \
+                "FinancialReview" \
+                "Gardening" \
+                "HomeImprovement" \
+                "HouseCleaning" \
+                "InvestmentResearch" \
+                "Journaling" \
+                "LanguageLearning" \
+                "LearnTaskwarrior" \
+                "MealPreparation" \
+                "Meditation" \
+                "OnlineCourse" \
+                "ReadBook" \
+                "SkillDevelopment" \
+                "SocialNetworking" \
+                "TravelPlanning" \
+                "Workout"; do
             echo -e "\nSelected Task: $personal_task"
             echo "----------------------------------------------------"
             break
