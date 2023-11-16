@@ -35,7 +35,8 @@ data.location=/Users/fcp/.task
 #include dark-yellow-green.theme
 #include dark-gray-256.theme
 #include dark-gray-blue-256.theme
-#include solarized-dark-256.theme
+include solarized-dark-256.theme
 #include solarized-light-256.theme
 #include no-color.theme
 
+news.version=2.6.0
