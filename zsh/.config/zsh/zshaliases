@@ -80,3 +80,5 @@ alias nb='newsboat'
 alias note='nvim +"Telekasten new_note"'
 #alias todo='nvim +"Telekasten goto_today"'
 
+# Taskwarrior
+alias taskadd="bash /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/taskadd.sh"
