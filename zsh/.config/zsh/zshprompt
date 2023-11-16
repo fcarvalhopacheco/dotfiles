@@ -82,25 +82,28 @@ GIT_PS1_SHOWCOLORHINTS=1
 #     __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
 #    #__git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
 # }
+#
+# #!/usr/bin/env zsh
 
-
+# Function to fetch Git status
+git_prompt_info() {
+    local git_status="$(git status --porcelain --branch 2>/dev/null)"
+    if [[ -n "$git_status" ]]; then
+        local branch="$(echo "$git_status" | grep '^##' | sed -e 's/## //g' -e 's/\.\.\..*//g')"
+        local tracking_info=""
+        if [[ "$git_status" == *" M "* ]]; then
+            tracking_info+=" %F{red}✗"
+        fi
+        if [[ "$git_status" == *"??"* ]]; then
+            tracking_info+=" %F{yellow}?%f"
+        fi
+        echo "%F{cyan}${branch}%f${tracking_info}"
+    fi
+}
 
 # Define the prompt
 set_prompt() {
-    local git_branch_color="%{$fg_bold[green]%}"
-    local git_status='$(git status --porcelain 2>/dev/null)'
-    local changes_indicator="%{$fg_bold[red]%}✗"
-
-    local git_branch='$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)'
-    local git_info=""
-
-    if [[ -n $git_status ]]; then
-        git_info=" ${git_branch_color}${git_branch}${changes_indicator}"
-    else
-        git_info=" ${git_branch_color}${git_branch}"
-    fi
-
-    PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c${git_info}%{$reset_color%}%B "
+    PROMPT='%B%F{blue}[%f%n%F{yellow}@%f%m%F{blue}]%f %(?:%F{green}🏄 :%F{magenta}➜ )%F{cyan}%~%f $(git_prompt_info) %# %b%f'
 }
 
 # Trigger set_prompt before each command
