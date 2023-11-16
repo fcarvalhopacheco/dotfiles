@@ -64,6 +64,7 @@
 # #zprof
 #
 
+# Faster than the above with vcs_info
 # Set prompt options
 source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
 setopt prompt_subst
@@ -76,8 +77,35 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-# Define the precmd function
-precmd() {
-    __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
-   #__git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
+# # Define the precmd function
+# precmd() {
+#     __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
+#    #__git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
+# }
+
+
+
+# Define the prompt
+set_prompt() {
+    local git_branch_color="%{$fg_bold[green]%}"
+    local git_status='$(git status --porcelain 2>/dev/null)'
+    local changes_indicator="%{$fg_bold[red]%}✗"
+
+    local git_branch='$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)'
+    local git_info=""
+
+    if [[ -n $git_status ]]; then
+        git_info=" ${git_branch_color}${git_branch}${changes_indicator}"
+    else
+        git_info=" ${git_branch_color}${git_branch}"
+    fi
+
+    PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c${git_info}%{$reset_color%}%B "
 }
+
+# Trigger set_prompt before each command
+precmd_functions+=(set_prompt)
+
+
+
+
