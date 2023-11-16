@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # bash/zsh git prompt support
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
