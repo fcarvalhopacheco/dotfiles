@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-
+# zmodload zsh/zprof
 #████████████████████████████████████████████████████████████████████████████
 #
 #
@@ -62,12 +62,22 @@ export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=1000                   # Maximum events for internal history
 export SAVEHIST=1000                  # Maximum events in history file
 
+# Add to PATH without duplicating entries
+add_to_path() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+add_to_path "${HOME}/.config/zsh"
+add_to_path "${HOME}/.config/zsh/scripts"
+add_to_path "${HOME}/.local/bin"
 
-# PATH
-[ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
-[ -d "${HOME}/.config/zsh/scripts" ] && PATH="${PATH}:${HOME}/.config/zsh/scripts"
-[ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
-# [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
+# # PATH
+# [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
+# [ -d "${HOME}/.config/zsh/scripts" ] && PATH="${PATH}:${HOME}/.config/zsh/scripts"
+# [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
+# # [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
 
 # Alacrity
 . "$HOME/.cargo/env"
+# zprof
