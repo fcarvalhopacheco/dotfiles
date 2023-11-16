@@ -65,7 +65,7 @@
 #
 
 #Set prompt options
-source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
+#source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
 # setopt prompt_subst
 # autoload -U colors && colors
 #
@@ -105,7 +105,6 @@ source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
 #     fi
 # }
 
-
 # Enable prompt substitution and load colors
 setopt prompt_subst
 autoload -U colors && colors
@@ -117,6 +116,8 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
+# Load git-prompt
+source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
 
 # Define the prompt symbol based on the last command's success
 prompt_symbol() {
@@ -137,10 +138,11 @@ precmd() {
     # Check if in a git directory and fetch status
     if git rev-parse --git-dir > /dev/null 2>&1; then
         git_info=$(__git_ps1 " %s")
-        # Replace git status symbols
-        git_info=${git_info//\*/%{$fg_bold[red]%}✘}
-        git_info=${git_info//\$/%{$fg_bold[yellow]%}⚑}
-        git_info=${git_info//=%{$fg_bold[green]%}✓}
+        # Custom replacements for git status symbols
+        git_info=${git_info//\*/%{$fg_bold[red]%}✘}     # Dirty state
+        git_info=${git_info//+/%{$fg_bold[yellow]%}⚑}   # Added files
+        git_info=${git_info//=/%{$fg_bold[green]%}✓}    # Ahead of remote
+        git_info=${git_info//>/%{$fg_bold[blue]%}▶︎}    # Staged changes
     fi
 
     # Constructing the prompt
