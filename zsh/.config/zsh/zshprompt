@@ -117,12 +117,6 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-# Git status symbols
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}]"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✘"
-ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[yellow]%}⚑"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓"
 
 # Define the prompt symbol based on the last command's success
 prompt_symbol() {
@@ -138,16 +132,19 @@ precmd() {
     local ps_symbol=$(prompt_symbol)
     local user_host="%{$fg_bold[purple]%}%n%{$fg_no_bold[green]%}@%m"
     local current_dir="%{$fg_bold[blue]%}%~"
-    local git_status=''
+    local git_info=''
 
     # Check if in a git directory and fetch status
     if git rev-parse --git-dir > /dev/null 2>&1; then
-        git_status="$(__git_ps1 '%s')"
-        git_status="${ZSH_THEME_GIT_PROMPT_PREFIX}${git_status}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+        git_info=$(__git_ps1 " %s")
+        # Replace git status symbols
+        git_info=${git_info//\*/%{$fg_bold[red]%}✘}
+        git_info=${git_info//\$/%{$fg_bold[yellow]%}⚑}
+        git_info=${git_info//=%{$fg_bold[green]%}✓}
     fi
 
     # Constructing the prompt
-    PS1="${user_host} ${ps_symbol} ${current_dir} ${git_status} %{$reset_color%} "
+    PS1="${user_host} ${ps_symbol} ${current_dir} [${git_info}] %{$reset_color%} "
 }
 
 # Apply the new prompt
