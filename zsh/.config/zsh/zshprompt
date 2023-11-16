@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# zmodload zsh/zprof
 
 #
 #████████████████████████████████████████████████████████████████████████████
@@ -28,35 +29,54 @@
 #████████████████████████████████████████████████████████████████████████████
 
 # Loadthe Version Control System into your prompt
-autoload -Uz vcs_info
+# autoload -Uz vcs_info
+# autoload -U colors && colors
+#
+# zstyle ':vcs_info:*' enable git 
+#
+# precmd_vcs_info() { vcs_info }
+# precmd_functions+=( precmd_vcs_info )
+# setopt prompt_subst
+#
+# zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+# # 
+# +vi-git-untracked(){
+#     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+#         git status --porcelain | grep '??' &> /dev/null ; then
+#         hook_com[staged]+='!' # NEWFILES
+#     fi
+# }
+#
+# ##############################################################################
+# # %s : The current version control system, like git or svn.
+# # %r : The name of the root directory of the repository
+# # %S : The current path relative to the repository root directory
+# # %b : Branch information, like master
+# # %m : In case of Git, show information about stashes
+# # %u : Show unstaged changes in the repository
+# # %c : Show staged changes in the repository
+# ##############################################################################
+# zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[green]%})"
+#
+# PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
+# PROMPT+="\$vcs_info_msg_0_ "
+# #zprof
+#
+
+# Set prompt options
+source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
+setopt prompt_subst
 autoload -U colors && colors
 
-zstyle ':vcs_info:*' enable git 
+# Git prompt customization
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=1
 
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-# 
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        hook_com[staged]+='!' # NEWFILES
-    fi
+# Define the precmd function
+precmd() {
+    __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
 }
-
-##############################################################################
-# %s : The current version control system, like git or svn.
-# %r : The name of the root directory of the repository
-# %S : The current path relative to the repository root directory
-# %b : Branch information, like master
-# %m : In case of Git, show information about stashes
-# %u : Show unstaged changes in the repository
-# %c : Show staged changes in the repository
-##############################################################################
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[green]%})"
-
-PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
-PROMPT+="\$vcs_info_msg_0_ "
