@@ -64,51 +64,52 @@
 # #zprof
 #
 
-# Faster than the above with vcs_info
 # Set prompt options
-source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
-setopt prompt_subst
-autoload -U colors && colors
-
-# Git prompt customization
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM="auto"
-GIT_PS1_SHOWCOLORHINTS=1
-
-# # Define the precmd function
+# source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
+# setopt prompt_subst
+# autoload -U colors && colors
+#
+# # Git prompt customization
+# GIT_PS1_SHOWDIRTYSTATE=1
+# GIT_PS1_SHOWSTASHSTATE=1
+# GIT_PS1_SHOWUNTRACKEDFILES=1
+# GIT_PS1_SHOWUPSTREAM="auto"
+# GIT_PS1_SHOWCOLORHINTS=1
+#
+# # # # Define the precmd function
 # precmd() {
 #     __git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}" " (%s)"
-#    #__git_ps1 "%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}] %{$fg[cyan]%}%c%{$reset_color%}" " %B%{$reset_color%}"
 # }
-#
-# #!/usr/bin/env zsh
 
-# Function to fetch Git status
-git_prompt_info() {
-    local git_status="$(git status --porcelain --branch 2>/dev/null)"
-    if [[ -n "$git_status" ]]; then
-        local branch="$(echo "$git_status" | grep '^##' | sed -e 's/## //g' -e 's/\.\.\..*//g')"
-        local tracking_info=""
-        if [[ "$git_status" == *" M "* ]]; then
-            tracking_info+=" %F{red}✗"
-        fi
-        if [[ "$git_status" == *"??"* ]]; then
-            tracking_info+=" %F{yellow}?%f"
-        fi
-        echo "%F{cyan}${branch}%f${tracking_info}"
-    fi
+
+
+# Source the git-prompt script
+source /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/git-prompt.sh
+
+# Enable prompt substitution for dynamic content
+setopt prompt_subst
+
+# Load colors for styling the prompt
+autoload -U colors && colors
+
+# Git prompt customizations
+GIT_PS1_SHOWDIRTYSTATE=1        # Show '*' if there are unstaged changes
+GIT_PS1_SHOWSTASHSTATE=1        # Show '$' if there are stashes
+GIT_PS1_SHOWUNTRACKEDFILES=1    # Show '%' if there are untracked files
+GIT_PS1_SHOWUPSTREAM="auto"     # Show tracking branch differences
+GIT_PS1_SHOWCOLORHINTS=1        # Enable colored hints in the prompt
+
+# Define the precmd function to update the prompt before each command
+precmd() {
+    # Define prompt elements for user, host, and current directory
+    local user_host="%B%{$fg[blue]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[blue]%}]"
+    local status_symbol="%(?:%{$fg_bold[green]%}🏄 :%{$fg_bold[magenta]%}➜ )"
+    local current_dir="%{$fg[cyan]%}%c%{$reset_color%}"
+
+    # Use __git_ps1 to update the prompt with Git status
+    __git_ps1 "$user_host $status_symbol $current_dir" " %B%{$reset_color%}" " (%s)"
 }
 
-# Define the prompt
-set_prompt() {
-    PROMPT='%B%F{blue}[%f%n%F{yellow}@%f%m%F{blue}]%f %(?:%F{green}🏄 :%F{magenta}➜ )%F{cyan}%~%f $(git_prompt_info) %# %b%f'
-}
-
-# Trigger set_prompt before each command
-precmd_functions+=(set_prompt)
-
-
-
-
+# Register the precmd function to be called before each command execution
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd
