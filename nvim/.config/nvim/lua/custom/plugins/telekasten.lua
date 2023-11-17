@@ -1,3 +1,6 @@
+-- Remove the defaul mapping for calendar
+vim.g.calendar_no_mappings = 1
+
 return {
   {
     'renerocksai/telekasten.nvim',
@@ -18,6 +21,11 @@ return {
         end
         vim.api.nvim_set_keymap(mode, lhs, rhs, options)
       end
+
+
+      -- Change Calendar mapping
+      map("n", "<leader>zcal", ":Calendar<CR>", { desc = "[C]alendar Vertically-split" })
+      map("n", "<leader>zcah", ":Calendar<CR>", { desc = "[C]alendar Horizontally-split" })
 
       map("n", "<leader>zp", ":lua require('telekasten').panel()<CR>", { desc = "[Z]ettle [P]anel" })
 
