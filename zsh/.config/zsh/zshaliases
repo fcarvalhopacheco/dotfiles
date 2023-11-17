@@ -40,20 +40,20 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 #  LS
-alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
-alias lsa='ls -a -- .*(.)'				# only show dot-filesalias
-alias ls="ls"
-alias l="ls -la"
-alias ll="ls -l"
-alias ltra="ls -ltra"
+# alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
+# alias lsa='ls -a -- .*(.)'				# only show dot-filesalias
+# alias ls="ls"
+# alias l="ls -la"
+# alias ll="ls -l"
+# alias ltra="ls -ltra"
 
 # ls using exa
-# alias ls="exa --icons --color=auto --group --git"               
-# alias l="exa -la --time-style iso --icons --color=auto --group --git"        
-# alias ll="exa -l --time-style iso --icons --color=auto --group --git"
-# alias lll="exa -lasnew --time-style iso --icons --color=auto --group --git"        
-# alias lt='exa -Tla --time-style iso --icons --color=auto --group --git'
-
+alias ld="eza -lD  --icons --color=always --group --git --sort=modified "
+alias lf="eza -lF  --icons --color=always --group --git --sort=modified | grep -v /"
+alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified "
+alias ll="eza -al --group-directories-first --icons --color=always --group --git --sort=modified"
+#alias ls="eza -alF --color=always --sort=size | grep -v /"
+alias lt="eza -al  --icons --color=always --group --git  --sort=modified"
 
 #  Shortcuts
 alias docs="cd ~/Documents"
@@ -74,7 +74,6 @@ alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source
 
 # Newsboat
 alias nb='newsboat'
-
 
 # Nvim
 alias note='nvim +"Telekasten new_note"'
