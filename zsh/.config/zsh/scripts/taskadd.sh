@@ -44,6 +44,7 @@ select_personal_details() {
                 "ArtProjects" \
                 "BookReading" \
                 "BudgetPlanning" \
+                "Code"\
                 "ExerciseRoutine" \
                 "FamilyTime" \
                 "FinancialReview" \
