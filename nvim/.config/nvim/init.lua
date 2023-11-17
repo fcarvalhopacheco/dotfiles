@@ -218,6 +218,9 @@ vim.o.guifont = "monospace:h17" -- the font used in graphical neovim application
 vim.o.cmdheight = 2             -- more space in the neovim command line for displaying messages
 vim.o.cursorline = true         -- highlight the current line
 vim.o.relativenumber = true     -- set relative numbered lines
+vim.o.spelllang = "en_us"       -- Set the spell language to en
+vim.o.spell = true              -- Enable spell checking
+
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -330,6 +333,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
+--  vim.api.nvim_command('highlight SpellBad ctermfg=Red guifg=Red')
+
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -440,6 +445,11 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  },
 }
 
 -- Diagnostic keymaps
@@ -497,6 +507,7 @@ end
 require('which-key').register {
   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+  ['<leader>f'] = { name = '[F]uzz finder', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
@@ -507,6 +518,7 @@ require('which-key').register {
   ['<leader>zf'] = { name = '[F]ind or [F]ollow', _ = 'which_key_ignore' },
   ['<leader>zg'] = { name = '[G]oto', _ = 'which_key_ignore' },
   ['<leader>zn'] = { name = '[N]ew', _ = 'which_key_ignore' },
+  ['<leader>zc'] = { name = '[C]alendar', _ = 'which_key_ignore' },
 }
 
 -- mason-lspconfig requires that these setup functions are called in this order
