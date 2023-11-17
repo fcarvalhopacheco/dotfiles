@@ -60,14 +60,14 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Enhanced eza aliases with sort by modification time
 
 # List Directories Only, with Custom Time Style
-alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=long-iso"
+alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
 # List Files Only, Excluding Directories, with Custom Time Style
-alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=long-iso | grep -v /"
+alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'| grep -v /"
 # List Hidden Files and Directories, Prioritizing Directories, with Custom Time Style
-alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified --time-style=long-iso"
+alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
 # List All Files and Directories, Prioritizing Directories, with Custom Time Style
-alias ll="eza -al --group-directories-first --icons --color=always --git --sort=modified --time-style=long-iso"
-alias lt="eza -al --icons --color=always --group --git --sort=modified --time-style=long-iso"
+alias ll="eza -al --group-directories-first --icons --color=always --git --sort=modified --time-style=+'%Y %b %d'"
+alias lt="eza -al --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
 
 
 #  Shortcuts
