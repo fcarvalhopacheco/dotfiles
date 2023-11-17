@@ -4,7 +4,7 @@ return {
     { 'nvim-telescope/telescope.nvim' },
   },
   lazy = true,
-  keys = { { "<leader>fz", ":Telescope bibtex<CR>", desc = "Fuzzy [f]ind bibtex ([z]otero) references",
+  keys = { { "<leader>fz", ":Telescope bibtex<CR>", desc = "[Z]otero references",
   } },
   init = function()
     require "telescope".load_extension("bibtex")
