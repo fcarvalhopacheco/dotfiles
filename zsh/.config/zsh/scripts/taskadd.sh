@@ -42,6 +42,7 @@ select_personal_details() {
         echo -e "Select Personal Task:\n"
         select personal_task in \
                 "ArtProjects" \
+                "Bike"\
                 "BookReading" \
                 "BudgetPlanning" \
                 "Code"\
@@ -59,6 +60,7 @@ select_personal_details() {
                 "Meditation" \
                 "OnlineCourse" \
                 "ReadBook" \
+                "Surf"\
                 "SkillDevelopment" \
                 "SocialNetworking" \
                 "TravelPlanning" \
