@@ -38,7 +38,6 @@ alias ...="cd ../.."
 alias cl=clear
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
 #  LS
 # alias lad='ls -d -- .*(/)'				# only show dot-directoriesalias
 # alias lsa='ls -a -- .*(.)'				# only show dot-filesalias
@@ -96,4 +95,4 @@ alias note='nvim +"Telekasten new_note"'
 #alias todo='nvim +"Telekasten goto_today"'
 
 # Taskwarrior
-alias taskadd="bash /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/taskadd.sh"
+alias taskadd="zsh /Users/fcp/.dotfiles/zsh/.config/zsh/scripts/taskadd.sh"
