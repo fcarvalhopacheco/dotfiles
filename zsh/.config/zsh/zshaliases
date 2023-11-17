@@ -47,13 +47,29 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # alias ll="ls -l"
 # alias ltra="ls -ltra"
 
-# ls using exa
-alias ld="eza -lD  --icons --color=always --group --git --sort=modified "
-alias lf="eza -lF  --icons --color=always --group --git --sort=modified | grep -v /"
-alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified "
-alias ll="eza -al --group-directories-first --icons --color=always --group --git --sort=modified"
-#alias ls="eza -alF --color=always --sort=size | grep -v /"
-alias lt="eza -al  --icons --color=always --group --git  --sort=modified"
+## --git LETTERS
+# M: Modified - The file has been modified but not yet staged.
+# N: New - A new file that has not been added to the repository yet.
+# I: Ignored - The file is ignored by Git, typically as defined in .gitignore.
+# Other Statuses:
+# D: Deleted - The file is deleted from the working directory but not yet staged.
+# R: Renamed - The file has been renamed.
+# T: Type-change - The type of the file changed (e.g., from regular file to symlink).
+# U: Conflicted - The file is in a state of conflict due to merge or rebase.
+
+
+# Enhanced eza aliases with sort by modification time
+
+# List Directories Only, with Custom Time Style
+alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=long-iso"
+# List Files Only, Excluding Directories, with Custom Time Style
+alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=long-iso | grep -v /"
+# List Hidden Files and Directories, Prioritizing Directories, with Custom Time Style
+alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified --time-style=long-iso"
+# List All Files and Directories, Prioritizing Directories, with Custom Time Style
+alias ll="eza -al --group-directories-first --icons --color=always --git --sort=modified --time-style=long-iso"
+alias lt="eza -al --icons --color=always --group --git --sort=modified --time-style=long-iso"
+
 
 #  Shortcuts
 alias docs="cd ~/Documents"
