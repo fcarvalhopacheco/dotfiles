@@ -24,8 +24,9 @@ return {
 
 
       -- Change Calendar mapping
-      map("n", "<leader>zcal", ":Calendar<CR>", { desc = "[C]alendar Vertically-split" })
-      map("n", "<leader>zcah", ":Calendar<CR>", { desc = "[C]alendar Horizontally-split" })
+      map("n", "<leader>zcv", ":CalendarVR<CR>", { desc = "[V]ertically-split calendar" })
+      map("n", "<leader>zch", ":CalendarH<CR>", { desc = "[H]orizontally-split calendar" })
+      map("n", "<leader>zcf", ":CalendarT<CR>", { desc = "[F]ull screen calendar" })
 
       map("n", "<leader>zp", ":lua require('telekasten').panel()<CR>", { desc = "[Z]ettle [P]anel" })
 
@@ -38,7 +39,6 @@ return {
       -- SEARCH/SHOW
       map("n", "<leader>zsn", ":lua require('telekasten').search_notes()<CR>", { desc = "[S]earch [N]otes" })
       map("n", "<leader>zsc", ":lua require('telekasten').show_calendar()<CR>", { desc = "[S]how [C]alendar" })
-      map("n", "<leader>zC", ":CalendarT<CR>", { desc = "[C]alendar" })
       map("n", "<leader>zsb", ":lua require('telekasten').show_backlinks()<CR>", { desc = "[S]how [B]acklinks" })
       map("n", "<leader>zst", ":lua require('telekasten').show_tags()<CR>", { desc = "[S]how [T]ags" })
       map("n", "<leader>z#", ":lua require('telekasten').show_tags()<CR>", { desc = "[#] == tags" })
