@@ -1,6 +1,13 @@
+# https://github.com/alacritty/alacritty-theme
 import:
-  - ~/.config/alacritty/themes/themes/catppuccin-mocha.yml
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+  - ~/.config/alacritty/themes/themes/raibow.yaml
+  #- ~/.config/alacritty/themes/themes/taerminal.yaml
+  #- ~/.config/alacritty/themes/themes/tender.yaml
+  #- ~/.config/alacritty/themes/themes/ayu_dark.yaml
+  # - ~/.config/alacritty/themes/themes/alabaster_dark.yaml
+
+
+  # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
 #
