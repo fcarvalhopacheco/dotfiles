@@ -69,7 +69,7 @@ add_to_path() {
     fi
 }
 add_to_path "${HOME}/.config/zsh"
-add_to_path "${HOME}/.config/zsh/scripts"
+add_to_path "${HOME}/.config/scripts"
 add_to_path "${HOME}/.local/bin"
 
 # # PATH

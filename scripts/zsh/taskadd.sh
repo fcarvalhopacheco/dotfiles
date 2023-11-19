@@ -1,10 +1,8 @@
-#!/bin/zsh
-
 clear
 echo "==================== Task Creation ===================="
 
 # Load the file
-source /Users/fcp/.dotfiles/zsh/.config/zsh/conf/taskconfig.sh
+source /Users/fcp/.dotfiles/scripts/zsh/conf/taskconfig.sh
 
 # Styling Function
 echo_line() {
@@ -67,7 +65,7 @@ confirm_and_add_task() {
     echo "You can use specific dates (e.g., '2023-12-31'), durations (e.g., '2weeks'), or relative dates (e.g., 'tomorrow', 'friday')."
     echo "Refer to Taskwarrior documentation for more options: https://taskwarrior.org/docs/durations/"
     echo " "
-    read "?Enter Due Date: " due_date
+    read -r "?Enter Due Date: " due_date
     due_date=${due_date//\"/}  # Remove quotes if any
     echo_line
 
@@ -82,9 +80,9 @@ confirm_and_add_task() {
         echo "Task to add: $task_desc\nCruise Number: $cruise_number\nWhat: $what\nTask Type: $task_type\nDue: $due_date\n"
     fi
 
-    read "?Confirm adding this task? (y/n): " input_confirm
+    read -r "?Confirm adding this task? (y/n): " input_confirm
     if [[ $input_confirm =~ ^[Yy]$ ]]; then
-        task add "$task_desc" project:$project due:"$due_date" $tags
+        task add "$task_desc" project:"$project" due:"$due_date" "$tags"
         echo "Task added successfully."
     else
         echo "Task addition cancelled."
