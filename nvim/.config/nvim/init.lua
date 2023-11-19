@@ -537,6 +537,7 @@ require('mason-lspconfig').setup()
 
 
 local servers = {
+  bashls = {},
   jsonls = {},
   -- clangd = {},
   -- gopls = {},
@@ -554,7 +555,6 @@ local servers = {
     },
   },
 }
-
 -- Setup neovim lua configuration
 require('neodev').setup()
 
