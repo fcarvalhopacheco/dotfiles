@@ -25,7 +25,7 @@ return {
         search_keys = { 'author', 'year', 'title' },
         -- Template for the formatted citation
         -- citation_format = '{{author}} ({{year}}), {{title}}.',
-        citation_format = "[[^@{{label}}]]: {{author}} ({{date}}), {{title}}.",
+        citation_format = "{{author}} ({{date}}), {{title}}.",
         -- Only use initials for the authors first name
         --citation_trim_firstname = false,
         -- Max number of authors to write in the formatted citation
