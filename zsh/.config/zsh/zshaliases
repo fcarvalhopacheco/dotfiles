@@ -60,14 +60,14 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Enhanced eza aliases with sort by modification time
 
 # List Directories Only, with Custom Time Style
-alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
+alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'"
 # List Files Only, Excluding Directories, with Custom Time Style
-alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'| grep -v /"
+alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'| grep -v /"
 # List Hidden Files and Directories, Prioritizing Directories, with Custom Time Style
-alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
+alias lh="eza -dl .* --group-directories-first --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'"
 # List All Files and Directories, Prioritizing Directories, with Custom Time Style
-alias ll="eza -al --group-directories-first --icons --color=always --git --sort=modified --time-style=+'%Y %b %d'"
-alias lt="eza -al --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d'"
+alias ll="eza -al --group-directories-first --icons --color=always --git --sort=modified --time-style=+'%Y %b %d %H:%M'"
+alias lt="eza -al --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'"
 
 
 #  Shortcuts
@@ -95,4 +95,4 @@ alias note='nvim +"Telekasten new_note"'
 #alias todo='nvim +"Telekasten goto_today"'
 
 # Taskwarrior
-alias taskadd="zsh /Users/fcp/.dotfiles/scripts/zsh/taskadd.sh"
+alias taskadd="zsh /Users/fcp/.dotfiles/scripts/.config/scripts/zsh/taskadd.sh"
