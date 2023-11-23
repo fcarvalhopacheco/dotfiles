@@ -117,7 +117,7 @@ GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
 # Load git-prompt
-source /Users/fcp/.dotfiles/scripts/zsh/git-prompt.sh
+source /Users/fcp/.dotfiles/scripts/.config/scripts/zsh/git-prompt.sh
 
 # Define the prompt symbol based on the last command's success
 prompt_symbol() {
