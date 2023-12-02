@@ -95,4 +95,4 @@ alias note='nvim +"Telekasten new_note"'
 #alias todo='nvim +"Telekasten goto_today"'
 
 # Taskwarrior
-alias taskadd="zsh /Users/fcp/.dotfiles/scripts/.config/scripts/zsh/taskadd.sh"
+alias taskadd="zsh $HOME/.dotfiles/scripts/.config/scripts/zsh/taskadd.sh"
