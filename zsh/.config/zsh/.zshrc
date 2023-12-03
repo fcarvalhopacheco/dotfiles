@@ -59,3 +59,4 @@ eval "$(/usr/local/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 
 # zprof
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
