@@ -34,11 +34,11 @@ what_options=(
 )
 
 # Task type options configuration
-task_type_options=(
-    "Analyzes" "CodeDevelopment" "Conference"
-    "CruiseParticipation" "CruisePreparation" "DataAnalysis" "DataArchive"
-    "DataDissimination" "DataManagement" "DataProcessing" "DataReport" "DataQC"
-    "DataRequest" "Instrumention" "Meeting" "Others" "PersonalDev" "SystemAdm"
+task_type_options=( "Analyzes" "CodeDevelopment" "Conference"
+	"CruiseParticipation" "CruisePreparation" "DataAnalysis" "DataArchive"
+	"DataCalibration" "DataDissimination" "DataManagement" "DataProcessing"
+	"DataReport" "DataQC" "DataRequest" "Instrumention" "Meeting" "Others"
+	"PersonalDev" "SystemAdm"
 )
 
 
