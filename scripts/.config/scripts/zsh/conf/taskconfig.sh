@@ -28,7 +28,7 @@ personal_tasks=( "ArtProjects" "Bike" "BookReading" "BudgetPlanning" "Code"
 
 # 'What' options configuration
 what_options=(
-    "AutoSal" "BGC" "Bottles" "CTD" "GitHub" "IFCB" "LADCP" "MetObs"
+    "AutoSal" "BGC" "Bottles" "CTD" "CS" "GitHub" "IFCB" "LADCP" "MetObs"
     "MicroCats" "MooredADCP" "Others" "ShipADCP" "TSG" "Underway" "UVP"
     "YearReview"
 )
