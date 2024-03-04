@@ -128,8 +128,23 @@ prompt_symbol() {
     fi
 }
 
+
 # Define the precmd function
 precmd() {
+    # Extract just the name of the conda environment
+    local env_name="${CONDA_DEFAULT_ENV##*/}"
+    
+    # Check if a conda environment is activated and format it
+    local conda_env=""
+    if [[ -n "$env_name" && "$env_name" != "base" ]]; then
+        # Display the environment name. Change the color as needed.
+        conda_env="%{$fg_bold[green]%}($env_name) "
+    elif [[ "$env_name" == "base" ]]; then
+        # Optionally handle the base environment differently or ignore it
+        # conda_env="%{$fg_bold[green]%}(base) "
+        conda_env=""
+    fi
+
     local ps_symbol=$(prompt_symbol)
     local user_host="%{$fg_bold[purple]%}%n%{$fg_no_bold[green]%}@%m"
     local current_dir="%{$fg_bold[blue]%}%~"
@@ -138,16 +153,16 @@ precmd() {
     # Check if in a git directory and fetch status
     if git rev-parse --git-dir > /dev/null 2>&1; then
         git_info=$(__git_ps1 " %s")
-        # Custom replacements for git status symbols
-        git_info=${git_info//\*/%{$fg_bold[red]%}✘}     # Dirty state
-        git_info=${git_info//+/%{$fg_bold[yellow]%}⚑}   # Added files
-        git_info=${git_info//=/%{$fg_bold[green]%}✓}    # Ahead of remote
-        git_info=${git_info//>/%{$fg_bold[blue]%}▶︎}    # Staged changes
+        git_info=${git_info//\*/%{$fg_bold[red]%}✘}
+        git_info=${git_info//+/%{$fg_bold[yellow]%}⚑}
+        git_info=${git_info//=/%{$fg_bold[green]%}✓}
+        git_info=${git_info//>/%{$fg_bold[blue]%}▶︎}
     fi
 
-    # Constructing the prompt
-    PS1="${user_host} ${ps_symbol} ${current_dir} [${git_info}] %{$reset_color%} "
+    # Constructing the prompt with conda_env at the very left
+    PS1="${conda_env}${user_host} ${ps_symbol} ${current_dir} [${git_info}] %{$reset_color%} "
 }
+
 
 # Apply the new prompt
 precmd
