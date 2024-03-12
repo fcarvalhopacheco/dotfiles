@@ -52,3 +52,6 @@ spell/*
 *-lock*
 *package*
 .config/nvim/node_modules/
+
+# avoid tmux plugins
+../tmux/.config/tmux/plugins/*
