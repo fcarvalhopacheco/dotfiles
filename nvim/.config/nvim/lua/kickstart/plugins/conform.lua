@@ -20,7 +20,6 @@ return {
         yaml = { 'prettier' },
         markdown = { 'prettier' },
         graphql = { 'prettier' },
-        lua = { 'stylua' },
         python = { 'isort', 'black' },
         -- Conform can also run multiple formatters sequentially
         -- You can use a sub-list to tell conform to run *until* a formatter
