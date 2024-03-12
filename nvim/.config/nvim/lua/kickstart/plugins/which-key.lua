@@ -27,6 +27,11 @@ return {
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>f'] = { name = '[F]ind Zotero', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon ', _ = 'which_key_ignore' },
+        ['<leader>o'] = { name = '[O]bsidian ', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = 'DiffView', _ = 'which_key_ignore' },
+        ['<leader>v'] = { name = '[V]env Selector', _ = 'which_key_ignore' },
       }
     end,
   },
