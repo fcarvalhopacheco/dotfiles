@@ -6,3 +6,6 @@
 .zcompdump
 .zsh_sessions
 nvim.bak/
+
+# avoid tmux plugins
+/tmux/.config/tmux/plugins/*
