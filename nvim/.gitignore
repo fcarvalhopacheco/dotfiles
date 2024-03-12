@@ -1,6 +1,7 @@
 # Compiled Lua sources
 luac.out
 nvim.backup
+nvim.usethis
 
 # luarocks build files
 *.src.rock
@@ -42,3 +43,12 @@ nvim.backup
 
 
 plugin/packer_compiled.lua
+tags
+test.sh
+.luarc.json
+
+spell/*
+*lazy-lock.json
+*-lock*
+*package*
+.config/nvim/node_modules/
