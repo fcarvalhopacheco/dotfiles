@@ -7,6 +7,7 @@
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
+
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
   -- NOTE: And you can specify dependencies as well
@@ -19,9 +20,13 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
+    -- 'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
+    local function is_empty(s)
+      return s == nil or s == ''
+    end
     local dap = require 'dap'
     local dapui = require 'dapui'
 
@@ -32,13 +37,18 @@ return {
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+        -- python debug configuration is moved to this file
+        -- python = require 'kickstart.plugins.dap.handler.python',
+      },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
+        -- 'delve',
+        'python',
+        'debugpy',
       },
     }
 
@@ -82,6 +92,24 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Install golang specific config
-    require('dap-go').setup()
+
+    -- require('dap-go').setup()
+    require('dap-python').setup() -- Debug with default settings.
+    -- We can set additional custom config by below mechanism as well
+    table.insert(require('dap').configurations.python, {
+      type = 'python',
+      request = 'launch',
+      name = 'My custom launch configuration',
+      program = '${file}',
+      cwd = vim.fn.getcwd(),
+      console = 'integratedTerminal',
+      pythonPath = function()
+        if not is_empty(vim.env.CONDA_PREFIX) then
+          return vim.env.CONDA_PREFIX .. '/bin/python3'
+        else
+          return 'python3'
+        end
+      end,
+    })
   end,
 }
