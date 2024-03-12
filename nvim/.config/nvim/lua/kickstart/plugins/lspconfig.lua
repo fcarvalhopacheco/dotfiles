@@ -134,11 +134,22 @@ return {
       local servers = {
         bashls = {},
         jsonls = {},
-        -- clangd = {},
-        -- gopls = {},
-        pyright = {},
+        pyright = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = 'openFilesOnly',
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+
         marksman = {},
         yamlls = {},
+        ruff_lsp = {}, -- linter for python (includes flake8, pep8)
+
+        -- clangd = {},
+        -- gopls = {},
         -- clangd = {},
         -- gopls = {},
         -- rust_analyzer = {},
@@ -192,6 +203,12 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
+        'black', -- formatter
+        'debugpy', -- debugger
+        'flake8',
+        'isort', -- organize imports
+        'mypy',
+        'pylint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
