@@ -38,7 +38,7 @@ task_type_options=( "Analyzes" "CodeDevelopment" "Conference"
 	"CruiseParticipation" "CruisePreparation" "DataAnalysis" "DataArchive"
 	"DataCalibration" "DataDissimination" "DataManagement" "DataProcessing"
 	"DataReport" "DataQC" "DataRequest" "Instrumention" "Meeting" "Others"
-	"PersonalDev" "SystemAdm"
+	"PersonalDev" "PostCruiseReport" "SystemAdm"
 )
 
 
