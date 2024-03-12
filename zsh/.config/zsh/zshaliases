@@ -60,6 +60,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Enhanced eza aliases with sort by modification time
 
 # List Directories Only, with Custom Time Style
+alias l="eza -l --icons --git -a"
 alias ld="eza -lD --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'"
 # List Files Only, Excluding Directories, with Custom Time Style
 alias lf="eza -lF --icons --color=always --group --git --sort=modified --time-style=+'%Y %b %d %H:%M'| grep -v /"
@@ -91,7 +92,7 @@ alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source
 alias nb='newsboat'
 
 # Nvim
-alias note='nvim +"Telekasten new_note"'
+#alias note='nvim +"ObsidianNew test"'
 #alias todo='nvim +"Telekasten goto_today"'
 
 # Taskwarrior
