@@ -1,9 +1,9 @@
 # https://github.com/alacritty/alacritty-theme
 import:
-  - ~/.config/alacritty/themes/themes/raibow.yaml
-  #- ~/.config/alacritty/themes/themes/taerminal.yaml
-  #- ~/.config/alacritty/themes/themes/tender.yaml
-  #- ~/.config/alacritty/themes/themes/ayu_dark.yaml
+  # - ~/.config/alacritty/themes/themes/rose-pine.yaml
+  # - ~/.config/alacritty/themes/themes/taerminal.yaml
+  # - ~/.config/alacritty/themes/themes/tender.yaml
+  - ~/.config/alacritty/themes/themes/ayu_dark.yaml
   # - ~/.config/alacritty/themes/themes/alabaster_dark.yaml
 
 
@@ -30,7 +30,8 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  # TERM: xterm-256color
+  TERM: tmux-256color
 
 
 window:
@@ -460,10 +461,10 @@ selection:
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-#shell:
-#  program: /bin/zsh
-#  args:
-#    - --login
+shell:
+ program: /usr/local/bin/zsh
+ # args:
+ #   - "tmux"
 
 # Startup directory
 #
