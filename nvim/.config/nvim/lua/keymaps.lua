@@ -81,11 +81,17 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- Ex: You highlight and copy a word. Then you highlight another word
--- and you paste the old word over the new word. You will loose the yank from
--- the "old" word if you. The following remap <leader>p will delete the new
--- highlighted word into the void register and then paste it over
--- In summary: the old(first) word will be always preserved...
+-- This key mapping allows you to delete the currently selected text in visual
+-- mode without affecting the unnamed clipboard and then paste the previously
+-- yanked text in place of what you just deleted. It's a very handy way to
+-- replace a section of text with something you've copied earlier.
+-- First, yank some text you want to paste later by selecting it (with v for
+-- visual mode or V for visual line mode) and pressing y. Navigate to another
+-- section of text you want to replace. Enter visual mode again (v or V) and
+-- select the text you want to replace. Press <leader>p (which might be Space+p
+-- if your leader is the spacebar). The selected text will be deleted without
+-- affecting the clipboard, and the text you yanked in step 1 will be pasted in
+-- its place.
 vim.keymap.set('x', '<leader>p', [["_dP]])
 
 -- [[ Highlight on yank ]]
