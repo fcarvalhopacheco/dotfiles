@@ -8,4 +8,6 @@
 nvim.bak/
 
 # avoid tmux plugins
-/tmux/.config/tmux/plugins/*
+~/.dotfiles/tmux/plugins
+tmux/.config/tmux/plugins/tmux-cpu/
+tmux/.config/tmux/plugins/tmux-continuum/
