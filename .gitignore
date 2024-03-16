@@ -11,3 +11,4 @@ nvim.bak/
 ~/.dotfiles/tmux/plugins
 tmux/.config/tmux/plugins/tmux-cpu/
 tmux/.config/tmux/plugins/tmux-continuum/
+.config/tmux/plugins/tmux/
