@@ -97,3 +97,7 @@ alias nb='newsboat'
 
 # Taskwarrior
 alias taskadd="zsh $HOME/.dotfiles/scripts/.config/scripts/zsh/taskadd.sh"
+
+# Fix color when ssh
+alias ssh='TERM="screen-256color" ssh'
+
