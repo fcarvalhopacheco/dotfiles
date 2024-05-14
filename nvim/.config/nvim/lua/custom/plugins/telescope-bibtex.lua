@@ -9,7 +9,7 @@ return {
       'nvim-telescope/telescope.nvim', -- Dependency declaration
     },
     keys = {
-      { '<leader>fz', ':Telescope bibtex<CR>', desc = '[Z]otero references' },
+      { '<leader>zz', ':Telescope bibtex<CR>', desc = '[Z]otero references' },
     },
     init = function()
       -- Loading the bibtex extension as soon as telescope is available
