@@ -79,13 +79,13 @@ return {
 
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = '/Users/fcp/Documents/zettelkasten/daily',
+      folder = 'daily',
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = '%Y-%m-%d',
       -- Optional, if you want to change the date format of the default alias of daily notes.
       alias_format = '%B %-d, %Y',
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = '/Users/fcp/Documents/zettelkasten/Templates/daily.md',
+      template = 'daily.md',
     },
 
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
