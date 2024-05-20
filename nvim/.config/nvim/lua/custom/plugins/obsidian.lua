@@ -81,9 +81,11 @@ return {
       -- Optional, if you keep daily notes in a separate directory.
       folder = 'daily',
       -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = '%Y-%m-%d',
+      -- date_format = '%Y%m%d%H%M%S',
+      date_format = '%Y%m%d',
       -- Optional, if you want to change the date format of the default alias of daily notes.
-      alias_format = '%B %-d, %Y',
+      alias_format = '%Y%m%d%H%M%S',
+      -- date_format = '%Y%m%d%H%M%S',
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
       template = 'daily.md',
     },
@@ -140,7 +142,7 @@ return {
       -- ID Default settings
       -- return tostring(os.time()) .. '-' .. suffix
       -- ID YYYYMMDDHHMM instead default seconds...
-      return tostring(os.date '%Y%m%d%H%M') .. '-' .. suffix
+      return tostring(os.date '%Y%m%d%H%M%S') .. '-' .. suffix
     end,
 
     -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -278,6 +280,9 @@ return {
         end,
         weekday = function()
           return os.date('%A', os.time())
+        end,
+        modified = function()
+          return os.date '%Y-%m-%d %H:%M:%S'
         end,
       },
     },
