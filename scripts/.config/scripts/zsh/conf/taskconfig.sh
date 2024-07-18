@@ -29,16 +29,17 @@ personal_tasks=( "ArtProjects" "Bike" "BookReading" "BudgetPlanning" "Code"
 # 'What' options configuration
 what_options=(
     "AutoSal" "BGC" "Bottles" "CTD" "CS" "GitHub" "IFCB" "LADCP" "MetObs"
-    "MicroCats" "MooredADCP" "Others" "ShipADCP" "TSG" "Underway" "UVP"
-    "YearReview" "GlassBalls"
+    "MicroCats" "MooredADCP" "ShipADCP" "TSG" "Underway" "UVP"
+    "YearReview" "GlassBalls" "Courses" "Meeting" "Computer" "Loading" "Others" 
+    "CruiseParticipation"
 )
 
 # Task type options configuration
-task_type_options=( "Analyzes" "CodeDevelopment" "Conference"
+task_type_options=( "Analyzes" "Substandard" "CodeDevelopment" "Conference"
 	"CruiseParticipation" "CruisePreparation" "DataAnalysis" "DataArchive"
 	"DataCalibration" "DataDissimination" "DataManagement" "DataProcessing"
-	"DataReport" "DataQC" "DataRequest" "Instrumention" "Meeting" "Others"
-	"PersonalDev" "PostCruiseReport" "SystemAdm"
+	"DataReport" "DailyReport" "DataQC" "DataRequest" "Instrumention" "Meeting" "Others"
+	"PersonalDev" "PostCruiseReport" "SystemAdm" "Courses" 
 )
 
 
