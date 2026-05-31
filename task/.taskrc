@@ -1,48 +1,42 @@
-# [Created by task 2.6.2 11/15/2023 07:34:32]
-# Taskwarrior program configuration file.
-# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
-# 'man task-sync' or 'man taskrc'
+# Taskwarrior metadata fields for Fernando's workflow.
+# Add this block once to ~/.taskrc, then run:
+#   task diagnostics
+#
+# Avoid defining UDA priority. Taskwarrior already has built-in priority.
 
-# Here is an example of entries that use the default, override and blank values
-#   variable=foo   -- By specifying a value, this overrides the default
-#   variable=      -- By specifying no value, this means no default
-#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+uda.program.type=string
+uda.program.label=Program
 
-# You can also refence environment variables:
-#   variable=$HOME/task
-#   variable=$VALUE
+uda.scope.type=string
+uda.scope.label=Scope
 
-# Use the command 'task show' to see all defaults and overrides
+uda.taskid.type=string
+uda.taskid.label=Task ID
 
-# Files
-data.location=/Users/fcp/.task
+uda.component.type=string
+uda.component.label=Component
 
-# To use the default location of the XDG directories,
-# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+uda.worktype.type=string
+uda.worktype.label=Work Type
 
-#data.location=~/.local/share/task
-#hooks.location=~/.config/task/hooks
+uda.role.type=string
+uda.role.label=Role
 
-# Color theme (uncomment one to use)
-#include light-16.theme
-#include light-256.theme
-#include dark-16.theme
-#include dark-256.theme
-#include dark-red-256.theme
-#include dark-green-256.theme
-#include dark-blue-256.theme
-#include dark-violets-256.theme
-#include dark-yellow-green.theme
-#include dark-gray-256.theme
-#include dark-gray-blue-256.theme
-include solarized-dark-256.theme
-#include solarized-light-256.theme
-#include no-color.theme
+uda.outcome.type=string
+uda.outcome.label=Outcome
 
-news.version=2.6.0
-uda.reviewed.type=date
-uda.reviewed.label=Reviewed
-report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
-report._reviewed.columns=uuid
-report._reviewed.sort=reviewed+,modified+
-report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+uda.effort.type=numeric
+uda.effort.label=Effort Hours
+
+# Keep Taskwarrior reports simple. Use `taskaddpy stats` for real analytics.
+report.fnext.description=Fernando next actions
+report.fnext.columns=id,priority,project,component,worktype,due,urgency,description.count
+report.fnext.labels=ID,P,Project,Component,WorkType,Due,Urg,Description
+report.fnext.sort=urgency-
+report.fnext.filter=status:pending -WAITING -blocked
+
+report.freview.description=Year-review and RCUH-review candidates
+report.freview.columns=status,end,project,program,taskid,component,worktype,role,tags,description.count
+report.freview.labels=Status,Completed,Project,Program,TaskID,Component,WorkType,Role,Tags,Description
+report.freview.sort=status-,program+/,component+/,end-
+report.freview.filter=\( +year_review or +rcuh_review or +annual_report or component:YearReview or component:PerformanceReview \)
