@@ -80,24 +80,29 @@ alias dot="cd ~/.dotfiles/"
 
 
 # Git 
-alias gs='git status'
-alias gss='git status -s'
-alias gc='git commit -S -m'
-alias gd='git diff'
+#`alias gs='git status'
+#`alias gss='git status -s'
+#`alias gc='git commit -S -m'
+#`alias gd='git diff'
 
 # Conda
 alias condaon="source ~/.config/zsh/zshconda && echo 'conda is now on' && source $ZDOTDIR/.zshrc"
 
 # Newsboat
-alias nb='newsboat'
+alias nb='TERM=xterm-256color newsboat'
 
 # Nvim
-#alias note='nvim +"ObsidianNew test"'
-#alias todo='nvim +"Telekasten goto_today"'
+alias today="nvim /Users/fcp/Documents/zettelkasten/daily/$(date +'%Y%m%d').md +ObsidianToday"
+
+#alias template='nvim +ObsidianTemplate'
 
 # Taskwarrior
+alias tadd='python3 $HOME/.dotfiles/scripts/.config/scripts/python/taskwarrior/taskadd.py'
 alias taskadd="zsh $HOME/.dotfiles/scripts/.config/scripts/zsh/taskadd.sh"
+#alias taskadd2="zsh $HOME/.dotfiles/scripts/.config/scripts/zsh/taskadd_v2.sh"
 
 # Fix color when ssh
 alias ssh='TERM="screen-256color" ssh'
+
+
 

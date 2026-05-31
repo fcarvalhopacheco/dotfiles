@@ -67,6 +67,7 @@ add_to_path() {
         export PATH="$1:$PATH"
     fi
 }
+add_to_path "${HOME}/.config/local/share/nvim/mason/bin"
 add_to_path "${HOME}/.config/zsh"
 add_to_path "${HOME}/.config/scripts/zsh"
 add_to_path "${HOME}/.local/bin"
