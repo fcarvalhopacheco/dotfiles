@@ -17,10 +17,11 @@ zsh_lazy_loader _zsh_nvm_load nvm node npm npx corepack yarn pnpm
 if _zsh_is_terminal; then
     zsh_load_plugins "${ZSH_TERMINAL_PLUGINS_PRE[@]}"
 
-    if [[ -z "${_ZSH_FZF_LOADED:-}" && -f "$HOME/.fzf.zsh" ]]; then
-        source "$HOME/.fzf.zsh"
+    if [[ -z "${_ZSH_FZF_LOADED:-}" ]] && (( $+commands[fzf] )); then
+        source <(fzf --zsh)
         typeset -g _ZSH_FZF_LOADED=1
     fi
+    (( $+functions[_zsh_fzf_install_history_widget] )) && _zsh_fzf_install_history_widget
 
     zsh_load_plugins "${ZSH_TERMINAL_PLUGINS_POST[@]}"
 fi
