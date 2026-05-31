@@ -1,0 +1,42 @@
+# Taskwarrior metadata fields for Fernando's workflow.
+# Add this block once to ~/.taskrc, then run:
+#   task diagnostics
+#
+# Avoid defining UDA priority. Taskwarrior already has built-in priority.
+
+uda.program.type=string
+uda.program.label=Program
+
+uda.scope.type=string
+uda.scope.label=Scope
+
+uda.taskid.type=string
+uda.taskid.label=Task ID
+
+uda.component.type=string
+uda.component.label=Component
+
+uda.worktype.type=string
+uda.worktype.label=Work Type
+
+uda.role.type=string
+uda.role.label=Role
+
+uda.outcome.type=string
+uda.outcome.label=Outcome
+
+uda.effort.type=numeric
+uda.effort.label=Effort Hours
+
+# Keep Taskwarrior reports simple. Use `taskaddpy stats` for real analytics.
+report.fnext.description=Fernando next actions
+report.fnext.columns=id,priority,project,component,worktype,due,urgency,description.count
+report.fnext.labels=ID,P,Project,Component,WorkType,Due,Urg,Description
+report.fnext.sort=urgency-
+report.fnext.filter=status:pending -WAITING -blocked
+
+report.freview.description=Year-review and RCUH-review candidates
+report.freview.columns=status,end,project,program,taskid,component,worktype,role,tags,description.count
+report.freview.labels=Status,Completed,Project,Program,TaskID,Component,WorkType,Role,Tags,Description
+report.freview.sort=status-,program+/,component+/,end-
+report.freview.filter=\( +year_review or +rcuh_review or +annual_report or component:YearReview or component:PerformanceReview \)
