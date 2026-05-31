@@ -1,57 +1,73 @@
-.DS_Store
-/nvim/.config/nvim/plugin/packer_compiled.lua
-/alacritty/.config/alacritty/themes/
-.zsh_history
-.zhistory
-.zcompdump
-.zsh_sessions
-nvim.bak/
-
-# avoid tmux plugins
-~/.dotfiles/tmux/plugins
-tmux/.config/tmux/plugins/tmux-cpu/
-tmux/.config/tmux/plugins/tmux-continuum/
-.config/tmux/plugins/tmux/
-
-# Local/generated
-node_modules/
-*.backup/
-nvim/.config/nvim.2025.backup/
-nvim/.config/nvim/lua/kickstart/node_modules/
-.env
-.env.*
-*.pem
-*.key
-*.p12
-*.pfx
-id_rsa*
-id_ed25519*
-*.token
-*.secret
-.DS_Store
-node_modules/
-nvim/.config/nvim.2025.backup/
-
-# Python/cache
-.mypy_cache/
-__pycache__/
-*.pyc
-
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes/
 
-# Local task exports / reports
+# Local env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.token
+*.secret
+*.secrets
+secrets.*
+id_rsa*
+id_ed25519*
+
+# Runtime caches
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+node_modules/
+
+# zsh runtime state
+zsh/.config/zsh/.zcompdump*
+zsh/.config/zsh/.zhistory
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zsh_sessions/
+
+# Neovim generated files and local backups
+nvim/.config/nvim/plugin/packer_compiled.lua
+nvim/.config/nvim/lua/kickstart/node_modules/
+nvim/.config/nvim.2025.backup/
+nvim.bak/
+
+# Alacritty downloaded themes
+alacritty/.config/alacritty/themes/
+
+# tmux plugins and runtime session state
+tmux/.config/tmux/plugins/
+tmux/.config/tmux/resurrect/
+
+# Local/generated task exports and reports
 scripts/.config/scripts/python/tasks*.json
-scripts/.config/scripts/python/taskwarrior.zip
-scripts/.config/scripts/python/taskwarrior/taskwarrior_full.json
 scripts/.config/scripts/python/tag_activity_count_report_*.txt
+scripts/.config/scripts/python/taskwarrior.zip
+scripts/.config/scripts/python/taskwarrior/*.json
+scripts/.config/scripts/python/taskwarrior/taskwarrior_full.json
+scripts/.config/scripts/python/taskwarrior/**/__pycache__/
+
+# Taskwarrior and Timewarrior private data
+task/.task/
+task/**/*.data
+task/**/*.json
+task/**/backlog.data
+task/**/completed.data
+task/**/pending.data
+task/**/undo.data
+timewarrior/
+timew/
+*.timew.json
 
 # Scratch scripts
 scripts/.config/scripts/zsh/test.sh
-
-# Sensitive Taskwarrior exports
-*.json
-scripts/.config/scripts/python/taskwarrior/*.json
-scripts/.config/scripts/python/tasks*.json
-scripts/.config/scripts/python/taskwarrior/taskwarrior_full.json
-task/**/*.json
