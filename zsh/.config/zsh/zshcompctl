@@ -1,47 +1,7 @@
 #!/usr/bin/env zsh
-#zmodload zsh/zprof
 
-#████████████████████████████████████████████████████████████████████████████
-#
-#
-#    ██████╗ ██████╗ ███╗   ███╗██████╗  ██████╗████████╗██╗     
-#   ██╔════╝██╔═══██╗████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██║     
-#   ██║     ██║   ██║██╔████╔██║██████╔╝██║        ██║   ██║     
-#   ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║        ██║   ██║     
-#   ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ╚██████╗   ██║   ███████╗
-#    ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝      ╚═════╝   ╚═╝   ╚══════╝
-#          
-#    GitHub:  https://github.com/fcarvalhopacheco
-#
-#    References:
-#       - https://thevaluable.dev/zsh-completion-guide-examples/
-#       - https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh
-#       - https://www.strcat.de/dotfiles/
-#
-#
-#████████████████████████████████████████████████████████████████████████████
-
-# `zmoLoad` loads the complist module. 
-# The `complist` module provides advanced completion features to the Zsh shell.
-zmodload zsh/complist
-
-
-# The `autoload` command loads a file containing shell commands. 
-# To find this file, Zsh will look in the directories of the Zsh file 
-# search path, defined in the variable $fpath. From there, it will try 
-# to find a file named compinit.
-#
-# Once the compinit function is loaded, it is responsible for setting up 
-# the completion system for each shell session. 
-# It does this by defining the necessary completion functions and variables, 
-# as well as loading any completion modules that are needed.
-#
-# -U = it doesn't expand alias
-# -z = function written in zshell style! check zshstyle file for more info
-autoload -Uz compinit
-compinit
-
-_comp_options+=(globdots) # With hidden files
-
-# zprof
-
+typeset -g ZSH_ROOT="${ZDOTDIR:-$HOME/.config/zsh}"
+source "$ZSH_ROOT/lib/source.zsh"
+_zsh_source "lib/plugins.zsh"
+_zsh_source "conf.d/35-plugins.zsh"
+_zsh_source "conf.d/41-completion.zsh"

@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+set -u
+
+root="${ZDOTDIR:-$HOME/.config/zsh}"
+failed=0
+files=(
+    "$root/.zshenv"
+    "$root/.zshrc"
+    "$root"/lib/*.zsh(N)
+    "$root"/conf.d/*.zsh(N)
+    "$root"/zsh*(N)
+)
+
+for file in "${files[@]}"; do
+    zsh -n "$file" || failed=1
+done
+(( failed )) && exit 1
+
+zsh -i -c 'source ~/.config/zsh/.zshrc; source ~/.config/zsh/.zshrc; whence -w conda mamba condaon condaoff nvm node _conda >/dev/null; print smoke-ok'
+/usr/bin/time -p zsh -i -c exit
