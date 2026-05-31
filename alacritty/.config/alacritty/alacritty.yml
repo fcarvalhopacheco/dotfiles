@@ -3,9 +3,9 @@ import:
   # - ~/.config/alacritty/themes/themes/rose-pine.yaml
   # - ~/.config/alacritty/themes/themes/taerminal.yaml
   # - ~/.config/alacritty/themes/themes/tender.yaml
-  - ~/.config/alacritty/themes/themes/ayu_dark.yaml
-  # - ~/.config/alacritty/themes/themes/alabaster_dark.yaml
-
+  # - ~/.config/alacritty/themes/themes/ayu_dark.yaml
+  - ~/.config/alacritty/themes/themes/alabaster_dark.yaml
+  # ~/.config/alacritty/themes/themes/palenight.yaml
 
   # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
@@ -32,7 +32,6 @@ env:
   # available, otherwise `xterm-256color` is used.
   # TERM: xterm-256color
   TERM: tmux-256color
-
 
 window:
   # Window dimensions (changes require restart)
@@ -142,7 +141,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "SFMono Nerd Font"
+    family: "JetBrainsMono Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -153,7 +152,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "SFMono Nerd Font"
+    family: "JetBrainsMono Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -165,7 +164,7 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: "SFMono Nerd Font"
+    family: "JetBrainsMono Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -462,10 +461,10 @@ selection:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 shell:
- program: /usr/local/bin/zsh
- # args:
- #   - "tmux"
-
+  program: /usr/local/bin/zsh
+  # program: /bin/zsh
+  # args:
+  #   - "tmux"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working

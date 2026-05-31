@@ -2,6 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+build
 
 # Icon must end with two \r
 Icon
@@ -132,7 +133,6 @@ Terms
 Privacy
 Security
 Status
-Docs
 Contact GitHub
 Pricing
 API
@@ -142,4 +142,4 @@ About
 
 
 
-plugins/
+plugins

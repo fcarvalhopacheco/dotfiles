@@ -12,3 +12,9 @@ nvim.bak/
 tmux/.config/tmux/plugins/tmux-cpu/
 tmux/.config/tmux/plugins/tmux-continuum/
 .config/tmux/plugins/tmux/
+
+# Local/generated
+node_modules/
+*.backup/
+nvim/.config/nvim.2025.backup/
+nvim/.config/nvim/lua/kickstart/node_modules/
