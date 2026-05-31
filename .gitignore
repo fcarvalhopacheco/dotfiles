@@ -18,3 +18,40 @@ node_modules/
 *.backup/
 nvim/.config/nvim.2025.backup/
 nvim/.config/nvim/lua/kickstart/node_modules/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.token
+*.secret
+.DS_Store
+node_modules/
+nvim/.config/nvim.2025.backup/
+
+# Python/cache
+.mypy_cache/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Local task exports / reports
+scripts/.config/scripts/python/tasks*.json
+scripts/.config/scripts/python/taskwarrior.zip
+scripts/.config/scripts/python/taskwarrior/taskwarrior_full.json
+scripts/.config/scripts/python/tag_activity_count_report_*.txt
+
+# Scratch scripts
+scripts/.config/scripts/zsh/test.sh
+
+# Sensitive Taskwarrior exports
+*.json
+scripts/.config/scripts/python/taskwarrior/*.json
+scripts/.config/scripts/python/tasks*.json
+scripts/.config/scripts/python/taskwarrior/taskwarrior_full.json
+task/**/*.json
