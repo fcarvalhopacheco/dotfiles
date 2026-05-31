@@ -2,6 +2,7 @@
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
@@ -13,6 +14,14 @@ vim.o.breakindent = true -- Enable break indent
 vim.o.swapfile = false -- Don't use swapfile
 vim.o.undofile = true -- enable persistent undo
 vim.o.completeopt = 'menuone,noselect,noinsert'
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
@@ -112,7 +121,7 @@ if not isempty(conda_prefix) then
   vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, conda_prefix .. '/bin/python')
   vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. '/bin/python3')
 else
-  vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, 'python')
-  vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, 'python3')
+  vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, '/Users/fcp/mambaforge/bin/python')
+  vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, '/Users/fcp/mambaforge/bin/python3')
 end
 -----------------------------------------------------------

@@ -6,14 +6,14 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
       window = {
-        backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+        backdrop = 0.95, -- shade the backdrop of the zen window. set to 1 to keep the same as normal
         -- height and width can be:
         -- * an absolute number of cells when > 1
         -- * a percentage of the width / height of the editor when <= 1
         -- * a function that returns the width or the height
-        width = 80, -- width of the Zen window
-        height = 1, -- height of the Zen window
-        -- by default, no options are changed for the Zen window
+        width = 80, -- width of the zen window
+        height = 1, -- height of the zen window
+        -- by default, no options are changed for the zen window
         -- uncomment any of the options below, or add other vim.wo options you want to apply
         options = {
           signcolumn = 'no', -- disable signcolumn
@@ -36,19 +36,19 @@ return {
           -- statusline will be shown only if 'laststatus' == 3
           laststatus = 0, -- turn off the statusline in zen mode
         },
-        -- twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+        -- twilight = { enabled = true }, -- enable to start twilight when zen mode opens
         gitsigns = { enabled = false }, -- disables git signs
         tmux = { enabled = true }, -- disables the tmux statusline
         -- this will change the font size on alacritty when in zen mode
         -- uses `alacritty msg` subcommand to change font size
         alacritty = {
           enabled = true,
-          font = '30', -- font size
+          font = '40', -- font size
         },
       },
-      -- callback where you can add custom code when the Zen window opens
+      -- callback where you can add custom code when the zen window opens
       on_open = function(win) end,
-      -- callback where you can add custom code when the Zen window closes
+      -- callback where you can add custom code when the zen window closes
       on_close = function() end,
     },
   },

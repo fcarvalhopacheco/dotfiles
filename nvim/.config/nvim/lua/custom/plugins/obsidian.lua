@@ -43,6 +43,14 @@ return {
     -- map('n', '<leader>owr', '<cmd>ObsidianWorkspace 3.Resources<cr>', { desc = '[O]bsidian [W]orkspace [R]esource' })
     -- map('n', '<leader>owc', '<cmd>ObsidianWorkspace 4.Archive<cr>', { desc = '[O]bsidian [W]orkspace [A]rchive' })
     map('n', '<leader>ofl', '<cmd>ObsidianFollowLink<cr>', { desc = '[O]bsidian [F]ollow [L]ink' })
+
+    -- Autocommand to update the "Last Modified" timestamp
+    vim.cmd [[
+    augroup UpdateTimestamp
+      autocmd!
+      autocmd BufWritePre *.md if getline(1) =~ 'modified:' | execute 'normal! 1G:s/modified:.*/modified: ' . strftime('%Y-%m-%d %H:%M:%S') . "\r" | endif
+    augroup END
+    ]]
   end,
   opts = {
     -- A list of workspace names, paths, and configuration overrides.
