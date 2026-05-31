@@ -1,0 +1,182 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+QUICK=0
+FAILURES=0
+WARNINGS=0
+
+usage() {
+  cat <<USAGE
+Usage: bin/dotfiles-doctor [options]
+
+Run non-destructive health checks for this dotfiles checkout.
+
+Options:
+      --quick   Skip slower optional checks
+  -h, --help    Show this help
+USAGE
+}
+
+pass() { printf 'PASS  %s\n' "$*"; }
+warn() { printf 'WARN  %s\n' "$*"; WARNINGS=$((WARNINGS + 1)); }
+fail() { printf 'FAIL  %s\n' "$*"; FAILURES=$((FAILURES + 1)); }
+
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+run_check() {
+  local label="$1"
+  shift
+  if "$@" >/tmp/dotfiles-doctor.out 2>/tmp/dotfiles-doctor.err; then
+    pass "$label"
+  else
+    fail "$label"
+    sed 's/^/      /' /tmp/dotfiles-doctor.err >&2
+    sed 's/^/      /' /tmp/dotfiles-doctor.out >&2
+  fi
+}
+
+parse_args() {
+  while (($#)); do
+    case "$1" in
+      --quick) QUICK=1 ;;
+      -h|--help) usage; exit 0 ;;
+      *) fail "Unknown option: $1"; usage; exit 2 ;;
+    esac
+    shift
+  done
+}
+
+check_commands() {
+  local cmd
+  for cmd in git zsh stow; do
+    if command_exists "$cmd"; then
+      pass "command available: $cmd"
+    else
+      fail "command missing: $cmd"
+    fi
+  done
+
+  for cmd in brew tmux shellcheck python3 task timew yabai skhd; do
+    if command_exists "$cmd"; then
+      pass "optional command available: $cmd"
+    else
+      warn "optional command missing: $cmd"
+    fi
+  done
+}
+
+check_zsh() {
+  local file
+  while IFS= read -r -d '' file; do
+    run_check "zsh syntax: ${file#"$DOTFILES_DIR"/}" zsh -n "$file"
+  done < <(
+    find "$DOTFILES_DIR/zsh/.config/zsh" \
+      -path '*/plugins/*' -prune -o \
+      -type f \( -name '.zshenv' -o -name '.zshrc' -o -name '*.zsh' -o -name 'zsh*' \) -print0
+  )
+}
+
+check_shell_scripts() {
+  local file
+
+  while IFS= read -r -d '' file; do
+    run_check "zsh script syntax: ${file#"$DOTFILES_DIR"/}" zsh -n "$file"
+  done < <(
+    find "$DOTFILES_DIR/scripts/.config/scripts/zsh" -type f \( -name '*.sh' -o -name '*.zsh' \) -print0
+  )
+
+  if command_exists shellcheck; then
+    run_check "shellcheck: install.sh" shellcheck "$DOTFILES_DIR/install.sh"
+    run_check "shellcheck: bin/dotfiles-doctor" shellcheck "$DOTFILES_DIR/bin/dotfiles-doctor"
+    run_check "shellcheck: taskwarrior/install.sh" shellcheck "$DOTFILES_DIR/scripts/.config/scripts/python/taskwarrior/install.sh"
+    run_check "shellcheck: yabairc" shellcheck -s sh "$DOTFILES_DIR/yabai/.config/yabai/yabairc"
+  else
+    warn "shellcheck unavailable; skipping shellcheck"
+  fi
+}
+
+check_python() {
+  command_exists python3 || { warn "python3 unavailable; skipping Python AST checks"; return; }
+
+  if PYTHONDONTWRITEBYTECODE=1 python3 - "$DOTFILES_DIR" <<'PY'
+import ast
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+failed = False
+for path in sorted((root / "scripts/.config/scripts/python").rglob("*.py")):
+    try:
+        ast.parse(path.read_text(), filename=str(path))
+    except SyntaxError as exc:
+        failed = True
+        print(f"{path}:{exc.lineno}:{exc.offset}: {exc.msg}", file=sys.stderr)
+if failed:
+    raise SystemExit(1)
+PY
+  then
+    pass "python AST syntax"
+  else
+    fail "python AST syntax"
+  fi
+}
+
+check_stow() {
+  command_exists stow || { warn "stow unavailable; skipping stow dry-run"; return; }
+
+  run_check "stow dry-run" stow --dir "$DOTFILES_DIR" --target "$HOME" --no --restow \
+    alacritty conda git newsboat nvim scripts skhd task tmux yabai zsh
+}
+
+check_tmux() {
+  command_exists tmux || { warn "tmux unavailable; skipping tmux parse"; return; }
+  run_check "tmux config parse" tmux -L dotfiles-doctor -f "$DOTFILES_DIR/tmux/.config/tmux/tmux.conf" start-server \; source-file "$DOTFILES_DIR/tmux/.config/tmux/tmux.conf" \; kill-server
+}
+
+check_git_hygiene() {
+  if git -C "$DOTFILES_DIR" ls-files | grep -E '(^|/)(pending|completed|undo|backlog)\.data$|taskwarrior_full\.json$|\.pem$|\.p12$|\.pfx$|id_rsa|id_ed25519' >/dev/null; then
+    fail "sensitive-looking files are tracked"
+  else
+    pass "no obvious sensitive task/key files tracked"
+  fi
+
+  if grep -q 'GitHub, Inc' "$DOTFILES_DIR/git/.gitignore_global"; then
+    fail "git/.gitignore_global contains copied webpage text"
+  else
+    pass "global gitignore looks clean"
+  fi
+}
+
+check_zsh_smoke() {
+  local smoke="$DOTFILES_DIR/zsh/.config/zsh/bin/zsh-smoke-test"
+  if [[ -x "$smoke" ]]; then
+    run_check "zsh smoke test" "$smoke"
+  else
+    warn "zsh smoke test missing or not executable"
+  fi
+}
+
+main() {
+  parse_args "$@"
+  printf 'Dotfiles root: %s\n\n' "$DOTFILES_DIR"
+
+  check_commands
+  check_git_hygiene
+  check_zsh
+  check_shell_scripts
+  check_python
+  check_zsh_smoke
+
+  if (( ! QUICK )); then
+    check_stow
+    check_tmux
+  fi
+
+  printf '\nSummary: %d failure(s), %d warning(s)\n' "$FAILURES" "$WARNINGS"
+  (( FAILURES == 0 ))
+}
+
+main "$@"
