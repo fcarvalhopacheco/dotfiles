@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+setopt errexit nounset pipefail
 
 # Function to display help menu
 show_help() {
@@ -15,10 +16,18 @@ convert_heic_to_png() {
     local output_file="${input_file%.*}.png"
 
     if [[ -f "$input_file" ]]; then
-        convert "$input_file" "$output_file"
+        if (( $+commands[magick] )); then
+            magick "$input_file" "$output_file"
+        elif (( $+commands[convert] )); then
+            convert "$input_file" "$output_file"
+        else
+            print -u2 "heic2png: ImageMagick is required (magick or convert)"
+            return 1
+        fi
         echo "Converted $input_file to $output_file"
     else
-        echo "File not found: $input_file"
+        print -u2 "File not found: $input_file"
+        return 1
     fi
 }
 
@@ -32,4 +41,3 @@ fi
 for file in "$@"; do
     convert_heic_to_png "$file"
 done
-

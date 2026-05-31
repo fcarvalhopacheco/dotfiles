@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 clear
 echo "==================== Task Creation ===================="
 
