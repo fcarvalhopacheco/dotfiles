@@ -20,12 +20,17 @@
 
 # XDG Base Directory Specification
 #   : http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+[[ "${XDG_DATA_HOME:-}" == "$HOME/.config/local/share" ]] && unset XDG_DATA_HOME
+[[ "${XDG_CACHE_HOME:-}" == "$HOME/.config/cache" ]] && unset XDG_CACHE_HOME
+[[ "${ZSH_CACHE_DIR:-}" == "$HOME/.config/cache/zsh" ]] && unset ZSH_CACHE_DIR
 
-# GPG key
-export GPG_TTY=$(tty)
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+export ZSH_CACHE_DIR="${ZSH_CACHE_DIR:-$XDG_CACHE_HOME/zsh}"
+export ZSH_STATE_DIR="${ZSH_STATE_DIR:-$XDG_STATE_HOME/zsh}"
 
 # (( ${+*} )) = if variable is set don't set it anymore
 # Adapted from https://www.strcat.de/dotfiles/
@@ -57,20 +62,19 @@ export EDITOR="nvim"
 
 
 # Zsh environment variables
-export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
-export HISTSIZE=1000                   # Maximum events for internal history
-export SAVEHIST=1000                  # Maximum events in history file
+export HISTFILE="$ZSH_STATE_DIR/history"
+export HISTSIZE=50000
+export SAVEHIST=50000
 
-# Add to PATH without duplicating entries
-add_to_path() {
-    if [[ ":$PATH:" != *":$1:"* ]]; then
-        export PATH="$1:$PATH"
-    fi
-}
-add_to_path "${HOME}/.config/local/share/nvim/mason/bin"
-add_to_path "${HOME}/.config/zsh"
-add_to_path "${HOME}/.config/scripts/zsh"
-add_to_path "${HOME}/.local/bin"
+# Add to PATH without duplicating entries.
+typeset -U path PATH
+[[ -d "$HOME/.config/local/share/nvim/mason/bin" ]] && path=("$HOME/.config/local/share/nvim/mason/bin" $path)
+[[ -d "$HOME/.config/zsh/bin" ]] && path=("$HOME/.config/zsh/bin" $path)
+[[ -d "$HOME/.config/zsh" ]] && path=("$HOME/.config/zsh" $path)
+[[ -d "$HOME/.config/scripts/zsh" ]] && path=("$HOME/.config/scripts/zsh" $path)
+[[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+[[ -d "$HOME/.cargo/bin" ]] && path=("$HOME/.cargo/bin" $path)
+export PATH
 
 # # PATH
 # [ -d "${HOME}/.config/zsh" ] && PATH="${PATH}:${HOME}/.config/zsh"
@@ -78,6 +82,4 @@ add_to_path "${HOME}/.local/bin"
 # [ -d "${HOME}/.local/bin" ] && PATH="${PATH}:${HOME}/.local/bin"
 # # [ -d "${HOME}/miniconda3/condabin" ] && PATH="${PATH}:${HOME}/miniconda3/condabin"
 
-# Alacrity
-. "$HOME/.cargo/env"
 # zprof

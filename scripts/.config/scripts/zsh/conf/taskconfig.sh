@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Configuration arrays or read them from an external file
 
 # taskconfig.sh - Configuration for task creation script
@@ -41,6 +42,5 @@ task_type_options=( "Analyzes" "Substandard" "CodeDevelopment" "Conference"
 	"DataReport" "DailyReport" "DataQC" "DataRequest" "Instrumention" "Meeting" "Others"
 	"PersonalDev" "PostCruiseReport" "SystemAdm" "Courses" 
 )
-
 
 
